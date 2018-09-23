@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
   namespace :api do
-    get 'menus/index'
-  end
-  namespace :api do
     resources :menus, only: :index
   end
   get 'menus/index'
