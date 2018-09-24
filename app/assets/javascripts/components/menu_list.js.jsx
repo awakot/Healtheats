@@ -1,4 +1,4 @@
-var MenuList = createReactClass({
+var MenuBox = createReactClass({
   loadMenusFromServer() {
     $.ajax({
       url: this.props.url,
@@ -20,14 +20,14 @@ var MenuList = createReactClass({
   },
   render() {
     return (
-      <div className="menuList">
-        <MenuListInner data={this.state.data}/>
+      <div className="menubox">
+        <MenuList data={this.state.data}/>
       </div>
     );
   }
 });
 
-var MenuListInner = createReactClass({
+var MenuList = createReactClass({
   render() {
     var menuNodes = this.props.data.map(function (menu) {
       return (
@@ -35,7 +35,7 @@ var MenuListInner = createReactClass({
       );
     });
     return (
-      <div className="menuList">
+      <div className="menubox-list">
         {menuNodes}
       </div>
     );
@@ -45,13 +45,13 @@ var MenuListInner = createReactClass({
 var Menu = createReactClass({
   render() {
     return (
-      <div className="menu">
-        <h2 className="menu_name">
+      <div className="menubox-list__item">
+        <h2 className="menubox-list__item--name">
           {this.props.data.name}
         </h2>
-        <p>{this.props.data.description}</p>
-        <p>¥{this.props.data.price}</p>
-        <p>{this.props.data.kcalorie} kcal</p>
+        <p className="menubox-list__item--desc">{this.props.data.description}</p>
+        <p className="menubox-list__item--price">¥{this.props.data.price}</p>
+        <p className="menubox-list__item--kcal">{this.props.data.kcalorie} kcal</p>
       </div>
     )
   }
