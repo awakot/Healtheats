@@ -1,0 +1,2 @@
+class MenuTag < ApplicationRecord
+end
