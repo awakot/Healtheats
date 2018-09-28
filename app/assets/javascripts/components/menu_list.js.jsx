@@ -35,8 +35,19 @@ var MenuBox = createReactClass({
   render() {
     return (
       <div className="menubox">
-        <MenuList data={this.state.data}/>
         <MenuForm onMenuSubmit={this.handleMenuSubmit}/>
+        <table>
+          <thead>
+            <tr>
+              <th>店名</th>
+              <th>メニュー名</th>
+              <th>説明</th>
+              <th>価格</th>
+              <th>kcal</th>
+            </tr>
+          </thead>
+          <MenuList data={this.state.data}/>
+        </table>
       </div>
     );
   }
@@ -50,9 +61,9 @@ var MenuList = createReactClass({
       );
     });
     return (
-      <div className="menubox-list">
+      <tbody className="menubox-list">
         {menuNodes}
-      </div>
+      </tbody>
     );
   }
 })
@@ -60,14 +71,15 @@ var MenuList = createReactClass({
 var Menu = createReactClass({
   render() {
     return (
-      <div className="menubox-list__item">
-        <h2 className="menubox-list__item--name">
+      <tr className="menubox-list__item">
+        <td>[# TODO: 店名]</td>
+        <td className="menubox-list__item--name">
           {this.props.data.name}
-        </h2>
-        <p className="menubox-list__item--desc">{this.props.data.description}</p>
-        <p className="menubox-list__item--price">¥{this.props.data.price}</p>
-        <p className="menubox-list__item--kcal">{this.props.data.kcalorie} kcal</p>
-      </div>
+        </td>
+        <td className="menubox-list__item--desc">{this.props.data.description}</td>
+        <td className="menubox-list__item--price">¥{this.props.data.price}</td>
+        <td className="menubox-list__item--kcal">{this.props.data.kcalorie} kcal</td>
+      </tr>
     )
   }
 })
