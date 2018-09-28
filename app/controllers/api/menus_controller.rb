@@ -1,5 +1,6 @@
 class Api::MenusController < ApplicationController
   protect_from_forgery :except => ["create"] # TODO: あとで消したい
+
   def index
     # GET /api/menus.json で仮のJSONを返す
     # TODO: DBから値取得

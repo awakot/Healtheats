@@ -77,6 +77,7 @@ var MenuForm = createReactClass({
     return (
       <div className="menubox-form">
         # TODO: returns menu form
+        Menuモデルをmasterにマージしたらformから新しいmenuをpostする処理を書く
       </div>
     )
   }
