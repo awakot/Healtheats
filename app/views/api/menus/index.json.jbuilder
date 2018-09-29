@@ -1,1 +1,1 @@
-json.data(@menus) { |d| json.extract!(d, :name, :description, :price, :kcalorie) }
+json.data(@data) { |d| json.extract!(d, :name, :description, :price, :kcalorie) }
