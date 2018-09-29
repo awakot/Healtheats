@@ -1,12 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe RestaurantsController, type: :controller do
+RSpec.describe "restaurants/index", type: :view do
 
   describe "GET #index" do
-    it "returns http success" do
-      get :index
-      expect(response).to have_http_status(:success)
+    it "shows sample strings" do
+      render
+      expect(rendered).to have_css(".restaurantbox-list__item")
     end
   end
-
 end
