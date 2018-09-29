@@ -1,5 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe "restaurants/index.html.erb", type: :view do
-  pending "add some examples to (or delete) #{__FILE__}"
+RSpec.describe "menus/index", type: :view do
+  it "shows restaurants list" do
+    # TODO: Reactをテストする
+    render
+    expect(rendered)
+  end
 end
