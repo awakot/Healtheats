@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe "menus/index", type: :view do
-  it "shows restaurants list" do
-    # TODO: Reactをテストする
+RSpec.describe "restaurants/index", type: :view do
+  it "shows restaurants list", js: true do
     render
-    expect(rendered)
+    expect(rendered).to have_css("h1", text: "店舗一覧")
+    # TODO: Reactをテストしたいけど無理そう ><
   end
 end

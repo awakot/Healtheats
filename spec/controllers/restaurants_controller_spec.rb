@@ -3,9 +3,9 @@ require 'rails_helper'
 RSpec.describe "restaurants/index", type: :view do
 
   describe "GET #index" do
-    it "shows sample strings", js: true do
+    it "successfully renders template" do
       render
-      expect(rendered).to have_css("h1", text: "店舗一覧")
+      expect(rendered)
     end
   end
 end
