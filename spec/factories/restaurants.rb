@@ -1,0 +1,9 @@
+require 'rails_helper'
+
+FactoryBot.define do
+  factory :restaurant do
+    name { "サパテロ" }
+    zip_code { 1500002 }
+    address { "東京都渋谷区ほげほげ" }
+  end
+end

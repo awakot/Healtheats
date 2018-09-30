@@ -60,4 +60,9 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
 
   config.include FactoryBot::Syntax::Methods
+  config.include Capybara::DSL # わからないが一応残しておく
+
+  def take_screenshot
+    page.save_and_open_screenshot
+  end
 end
