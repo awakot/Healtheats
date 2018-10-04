@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  namespace :api do
-    get 'menus', to: 'menus#index'
-    post 'menus', to: 'menus#create'
+  get 'restaurants/index'
+  namespace :api, format: 'json' do
+    resources :menus, only: :index # TODO: add :create
+    resources :restaurants, only: :index
   end
   get 'menus/index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
