@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  get 'sessions/new'
-  namespace :api do
-    get 'menus', to: 'menus#index'
-    post 'menus', to: 'menus#create'
+  get 'restaurants/index'
+  namespace :api, format: 'json' do
+    resources :menus, only: :index # TODO: add :create
+    resources :restaurants, only: :index
   end
   get 'menus/index'
   get  '/signup',  to: 'users#new'
