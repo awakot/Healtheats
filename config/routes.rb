@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   get 'sessions/new'
+  namespace :api do
+    get 'menus', to: 'menus#index'
+    post 'menus', to: 'menus#create'
+  end
   get 'menus/index'
   get  '/signup',  to: 'users#new'
   post '/signup',  to: 'users#create'
