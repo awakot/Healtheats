@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'tags/new'
   get 'restaurants/index'
   namespace :api, format: 'json' do
     resources :menus, only: :index # TODO: add :create
@@ -12,6 +13,8 @@ Rails.application.routes.draw do
   delete '/logout',  to: 'sessions#destroy'
 
   resources :users
+  resources :tags
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
