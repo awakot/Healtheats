@@ -1,4 +1,4 @@
 class MenuCategory < ApplicationRecord
-    belongs_to :category
-    belongs_to :menus
+  belongs_to :category
+  belongs_to :menus
 end
