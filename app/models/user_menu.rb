@@ -1,4 +1,4 @@
 class UserMenu < ApplicationRecord
-  belongs to :user
-  belongs to :menu
+  belongs_to :user
+  belongs_to :menu
 end
