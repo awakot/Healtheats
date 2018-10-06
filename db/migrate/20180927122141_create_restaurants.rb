@@ -4,8 +4,8 @@ class CreateRestaurants < ActiveRecord::Migration[5.2]
       t.integer :zip_code, null: false
       t.string :address, null: false
       t.string :name, null: false
-      t.decimal :latitude, precision: 9, scale: 6, null: false
-      t.decimal :longitude, precision: 9, scale: 6, null: false
+      t.decimal :latitude, precision: 10, scale: 6, null: false
+      t.decimal :longitude, precision: 10, scale: 6, null: false
 
       t.timestamps
     end
