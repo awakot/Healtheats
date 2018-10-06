@@ -13,9 +13,10 @@ class CategoriesController < ApplicationController
     respond_to do |format|
       if @book.update(book_params)
         format.html { redirect_to @book, notice: 'カテゴリーが更新されました。' }
-      enlse
+      else
         format.html { render :edit}
       end
+    end
   end
 
   def index
@@ -27,6 +28,7 @@ class CategoriesController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to books_url, notice: 'カテゴリーが削除されました。' }
+    end
   end
 
 private
