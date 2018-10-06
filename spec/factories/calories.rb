@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :calory do
+  factory :calorie do
     amount { 298 }
   end
 end

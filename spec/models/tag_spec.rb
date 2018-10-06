@@ -1,5 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Tag, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let!(:tag) { FactoryBot.create(:tag) }
+  it "successfully adds Tag.count by one" do
+    expect(Tag.count).to eq(1)
+  end
 end
