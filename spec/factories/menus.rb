@@ -5,5 +5,10 @@ FactoryBot.define do
     price { 800 }
     picture { "mock" }
     calorie_id { 1 }
+
+    after(:create) do |menu|
+      create(:menu_category, menu: menu, category: create(:category))
+      create(:menu_tag, menu: menu, tag: create(:tag))
+    end
   end
 end

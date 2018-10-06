@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe Menu, type: :model do
   let!(:restaurant) { FactoryBot.create(:restaurant) }
   let!(:calorie) { FactoryBot.create(:calorie) }
+  # let!(:categories) { FactoryBot.create(:category) }
   let!(:menu) { FactoryBot.create(:menu,
                                   calorie_id: calorie.id,
                                   restaurant_id: restaurant.id) }
@@ -14,6 +15,7 @@ RSpec.describe Menu, type: :model do
   it "successfully associates menu to calorie, restaurant, tag and category" do
     expect(restaurant.menus.count).to eq(1)
     expect(calorie.menus.count).to eq(1)
-    # TODO: tag, categoryのテスト
+    expect(menu.categories.count).to eq(1)
+    expect(menu.tags.count).to eq(1)
   end
 end

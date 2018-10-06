@@ -9,5 +9,5 @@ class Menu < ApplicationRecord
 
   validates :calorie_id, presence: true
 
-  accepts_nested_attributes_for :restaurant
+  accepts_nested_attributes_for :categories, :tags, :restaurant
 end
