@@ -6,6 +6,7 @@ class CreateMenus < ActiveRecord::Migration[5.2]
       t.integer :price, null: false
       t.string :picture, null: false
       t.references :calorie, foreign_key: true
+      t.references :restaurant, foreign_key: true
 
       t.timestamps
     end
