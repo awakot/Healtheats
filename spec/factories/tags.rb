@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :tag do
-    name { "" }
+    name { "ダイエット" }
   end
 end
