@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'restaurants/index'
   namespace :api, format: 'json' do
-    resources :menus, only: :index # TODO: add :create
+    resources :menus, only: [:index, :create]
     resources :restaurants, only: :index
   end
   get 'menus/index'

@@ -79,17 +79,44 @@ var Menu = createReactClass({
         <td className="menubox-list__item--desc">{this.props.data.description}</td>
         <td className="menubox-list__item--price">¥{this.props.data.price}</td>
         <td className="menubox-list__item--kcal">{this.props.data.kcalorie} kcal</td>
+        <td className="menubox-list__item--picture">{this.props.data.picture}</td>
       </tr>
     )
   }
 })
 
 var MenuForm = createReactClass({
+  handleSubmit(e){
+    console.log(this);
+    e.preventDefault();
+    var name = this.name.value.trim();
+    var description = this.description.value.trim();
+    var price = this.price.value.trim();
+    var calorie_id = this.calorie_id.value.trim();
+    var picture = this.picture.value.trim();
+    if (!name || !description || !price || !calorie_id || !picture) {
+      return;
+    }
+    this.props.onMenuSubmit({name: name, description: description, price: price, calorie_id: calorie_id, picture: picture});
+    // ↑ここでcallback実行する！
+    this.name.value = "";
+    this.description.value = "";
+    this.price.value = "";
+    this.calorie_id.value = "";
+    this.picture.value = "";
+    return;
+  },
   render(){
     return (
       <div className="menubox-form">
-        # TODO: returns menu form
-        Menuモデルをmasterにマージしたらformから新しいmenuをpostする処理を書く
+        <form className="menuForm" onSubmit={this.handleSubmit}>
+          <input type="text" placeholder="メニュー名" ref={(inputText) => { this.name = inputText; }} />
+          <input type="text" placeholder="説明" ref={(inputText) => { this.description = inputText; }} />
+          <input type="text" placeholder="価格" ref={(inputText) => { this.price = inputText; }} />
+          <input type="text" placeholder="キロカロリー" ref={(inputText) => { this.calorie_id = inputText; }} />
+          <input type="text" placeholder="アイコンまたは画像をアップロード" ref={(inputText) => { this.picture = inputText; }} />
+          <input type="submit" value="登録" />
+        </form>
       </div>
     )
   }
