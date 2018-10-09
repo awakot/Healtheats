@@ -22,7 +22,7 @@ class CategoriesController < ApplicationController
 
   def create
     @category = Category.new(category_params)
-    if @user.save
+    if @category.save
       redirect_back_or @category
     else
       render 'new'
