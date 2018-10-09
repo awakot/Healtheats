@@ -3,6 +3,7 @@ class CategoriesController < ApplicationController
   def new
     @category = Category.new
   end
+
   def edit
   end
 
@@ -11,11 +12,20 @@ class CategoriesController < ApplicationController
 
   def update
     respond_to do |format|
-      if @book.update(book_params)
-        format.html { redirect_to @book, notice: 'カテゴリーが更新されました。' }
+      if @category.update(category_params)
+        format.html { redirect_to @category, notice: 'カテゴリーが更新されました。' }
       else
         format.html { render :edit}
       end
+    end
+  end
+
+  def create
+    @category = Category.new(category_params)
+    if @user.save
+      redirect_back_or @category
+    else
+      render 'new'
     end
   end
 
@@ -35,5 +45,9 @@ private
 
   def set_category
     @category = Category.find(params[:id])
+  end
+
+  def category_params
+    params.require(:category).permit(:name)
   end
 end
