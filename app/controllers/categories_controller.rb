@@ -37,7 +37,7 @@ class CategoriesController < ApplicationController
     @category.destroy
 
     respond_to do |format|
-      format.html { redirect_to books_url, notice: 'カテゴリーが削除されました。' }
+      format.html { redirect_to categories_url, notice: 'カテゴリーが削除されました。' }
     end
   end
 
