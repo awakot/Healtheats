@@ -10,7 +10,7 @@ class TagsController < ApplicationController
 
   def update
     respond_to do |format|
-      if @book.update(book_params)
+      if @tag.update(tag_params)
         format.html { redirect_to @tag, notice: 'タグが更新されました。' }
       else
         format.html { render :edit}
@@ -20,6 +20,15 @@ class TagsController < ApplicationController
 
   def index
     @tags = Tag.all
+  end
+
+  def create
+    @tag = Tag.new(category_params)
+    if @tag.save
+      redirect_back_or @tag
+    else
+      render 'new'
+    end
   end
 
   def destroy
@@ -35,5 +44,8 @@ class TagsController < ApplicationController
     @tag = Tag.find(params[:id])
   end
 
+  def tag_params
+      params.require(:tag).permit(:name)
+  end
 
 end
