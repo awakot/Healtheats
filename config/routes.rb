@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   namespace :api, format: 'json' do
     resources :menus, only: [:index, :create]
     resources :restaurants, only: :index
+    resources :calories, only: :index
   end
   get 'menus/index'
   get  '/signup',  to: 'users#new'

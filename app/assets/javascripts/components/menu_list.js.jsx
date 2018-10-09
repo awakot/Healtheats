@@ -87,7 +87,6 @@ var Menu = createReactClass({
 
 var MenuForm = createReactClass({
   handleSubmit(e){
-    console.log(this);
     e.preventDefault();
     var name = this.name.value.trim();
     var description = this.description.value.trim();
@@ -113,7 +112,8 @@ var MenuForm = createReactClass({
           <input type="text" placeholder="メニュー名" ref={(inputText) => { this.name = inputText; }} />
           <input type="text" placeholder="説明" ref={(inputText) => { this.description = inputText; }} />
           <input type="text" placeholder="価格" ref={(inputText) => { this.price = inputText; }} />
-          <input type="text" placeholder="キロカロリー" ref={(inputText) => { this.calorie_id = inputText; }} />
+          <input type="text" placeholder="キロカロリー" ref={(inputText) => { this.calorie_id = inputText; }} />{/* あとで消す */}
+          <Calories />
           <input type="text" placeholder="アイコンまたは画像をアップロード" ref={(inputText) => { this.picture = inputText; }} />
           <input type="submit" value="登録" />
         </form>
@@ -121,3 +121,50 @@ var MenuForm = createReactClass({
     )
   }
 })
+
+var Calories = createReactClass ({
+  loadCaloriesFromServer() {
+    $.ajax({
+      url: "/api/calories",
+      dataType: 'json',
+      success: function(result) {
+        this.setState({data: result.data});
+      }.bind(this),
+      error: function(xhr, status, err) {
+        console.error(this.props.url, status, err.toString());
+      }.bind(this)
+    });
+  },
+  getInitialState() {
+    return {data: []};
+  },
+  componentDidMount() {
+    this.loadCaloriesFromServer();
+  },
+  render () {
+    var calorieNodes = this.state.data.map(function (comment) {
+      return (
+        <Calorie data={comment} />
+      );
+    });
+    return (
+      <div class="calories">
+        {calorieNodes}
+      </div>
+    );
+  }
+})
+
+var Calorie = createReactClass({
+  render(){
+    return (
+      <div class="calories-amount d-inline">
+        <input type="radio" name={this.props.data.amount} value={this.props.data.amount} />
+        <label for={this.props.data.amount}>{this.props.data.amount}</label>
+      </div>
+    );
+  }
+});
+
+// のち修正
+// https://qiita.com/takaki@github/items/8125535791b1bab8c85a
