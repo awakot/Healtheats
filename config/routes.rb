@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'tags/new'
   get 'restaurants/index'
   namespace :api, format: 'json' do
     resources :menus, only: :index # TODO: add :create

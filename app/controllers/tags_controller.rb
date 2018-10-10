@@ -23,7 +23,7 @@ class TagsController < ApplicationController
   end
 
   def create
-    @tag = Tag.new(category_params)
+    @tag = Tag.new(tag_params)
     if @tag.save
       redirect_back_or @tag
     else
@@ -45,7 +45,7 @@ class TagsController < ApplicationController
   end
 
   def tag_params
-      params.require(:tag).permit(:name)
+    params.require(:tag).permit(:name)
   end
 
 end
