@@ -35,7 +35,7 @@ var MenuBox = createReactClass({
   render() {
     return (
       <div className="menubox">
-        <MenuForm onMenuSubmit={this.handleMenuSubmit}/>
+        <MenuForm onMenuSubmit={this.handleMenuSubmit} ref={(menuForm) => { this.menuForm = menuForm }} />
         <table>
           <thead>
             <tr>
@@ -91,8 +91,9 @@ var MenuForm = createReactClass({
     var name = this.name.value.trim();
     var description = this.description.value.trim();
     var price = this.price.value.trim();
-    var calorie_id = this.calorie_id.value.trim();
+    var calorie_id = this.state.calorie_id.value;
     var picture = this.picture.value.trim();
+
     if (!name || !description || !price || !calorie_id || !picture) {
       return;
     }
@@ -101,7 +102,7 @@ var MenuForm = createReactClass({
     this.name.value = "";
     this.description.value = "";
     this.price.value = "";
-    this.calorie_id.value = "";
+    this.state.calorie_id.value = "";
     this.picture.value = "";
     return;
   },
@@ -112,8 +113,8 @@ var MenuForm = createReactClass({
           <input type="text" placeholder="メニュー名" ref={(inputText) => { this.name = inputText; }} />
           <input type="text" placeholder="説明" ref={(inputText) => { this.description = inputText; }} />
           <input type="text" placeholder="価格" ref={(inputText) => { this.price = inputText; }} />
-          <input type="text" placeholder="キロカロリー" ref={(inputText) => { this.calorie_id = inputText; }} />{/* あとで消す */}
-          <Calories />
+          {/* <input type="text" placeholder="キロカロリー" ref={(inputText) => { this.calorie_id = inputText; }} />あとで消す */}
+          <Calories ref={(input) => { this.state = input; }} />
           <input type="text" placeholder="アイコンまたは画像をアップロード" ref={(inputText) => { this.picture = inputText; }} />
           <input type="submit" value="登録" />
         </form>
@@ -130,7 +131,7 @@ var Calories = createReactClass ({
       success: function(result) {
         this.setState({data: result.data});
       }.bind(this),
-      error: function(xhr, status, err) {
+      error: function(status, err) {
         console.error(this.props.url, status, err.toString());
       }.bind(this)
     });
@@ -142,29 +143,16 @@ var Calories = createReactClass ({
     this.loadCaloriesFromServer();
   },
   render () {
-    var calorieNodes = this.state.data.map(function (comment) {
+    var calorieNodes = this.state.data.map(function (calorie) {
       return (
-        <Calorie data={comment} />
+        <option value={calorie.id}>{calorie.amount}</option>
       );
     });
+
     return (
-      <div class="calories">
+      <select className="calories-amount d-inline" ref={(opt) => { this.calorie_id = opt }}>
         {calorieNodes}
-      </div>
+      </select>
     );
   }
 })
-
-var Calorie = createReactClass({
-  render(){
-    return (
-      <div class="calories-amount d-inline">
-        <input type="radio" name={this.props.data.amount} value={this.props.data.amount} />
-        <label for={this.props.data.amount}>{this.props.data.amount}</label>
-      </div>
-    );
-  }
-});
-
-// のち修正
-// https://qiita.com/takaki@github/items/8125535791b1bab8c85a

@@ -1,1 +1,1 @@
-json.data(@data) { |d| json.extract!(d, :amount) }
+json.data(@data) { |d| json.extract!(d, :id, :amount) }
