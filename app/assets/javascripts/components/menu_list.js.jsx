@@ -23,7 +23,7 @@ var MenuBox = createReactClass({
       success: function(data) {
         this.setState({data: this.state.data.concat([data])});
       }.bind(this),
-      error: function(xhr, status, err) {
+      error: function(status, err) {
         console.error(this.props.url, status, err.toString());
       }.bind(this)
     });
@@ -69,7 +69,27 @@ var MenuList = createReactClass({
 })
 
 var Menu = createReactClass({
+  getInitialState() {
+    return {data: []};
+  },
+  getCalorie(){
+    $.ajax({
+      url: "/api/calories/".concat(this.props.data.calorie_id),
+      dataType: 'json',
+      type: 'GET',
+      success: function(data) {
+        this.state.calorie = data;
+      }.bind(this),
+      error: function(status, err) {
+        console.error(this.props.url, status, err.toString());
+      }.bind(this)
+    });
+  },
   render() {
+    this.getCalorie();
+    if (this.state.calorie !== undefined) {
+      var calorie_amount = this.state.calorie.data.amount
+    }
     return (
       <tr className="menubox-list__item">
         <td>[# TODO: 店名]</td>
@@ -78,7 +98,7 @@ var Menu = createReactClass({
         </td>
         <td className="menubox-list__item--desc">{this.props.data.description}</td>
         <td className="menubox-list__item--price">¥{this.props.data.price}</td>
-        <td className="menubox-list__item--kcal">{this.props.data.kcalorie} kcal</td>
+        <td className="menubox-list__item--kcal">{calorie_amount}kcal</td>
         <td className="menubox-list__item--picture">{this.props.data.picture}</td>
       </tr>
     )
