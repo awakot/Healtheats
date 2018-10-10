@@ -6,12 +6,22 @@ class Api::CaloriesController < ApplicationController
   end
 
   def create
-    @menu = Calorie.create(menu_params)
+    @calorie = Calorie.create(menu_params)
     render :index, status: :created
   end
 
   def show
     @data = Calorie.find(params[:id])
+  end
+
+  # メニューの更新のAPIは大変そうなので保留
+  # def update
+  # end
+
+  def delete
+    calorie = Calorie.find(params[:id])
+    calorie.destroy
+    render :index, status: :deleted
   end
 
   private
