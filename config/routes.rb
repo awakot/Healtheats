@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   get 'restaurants/index'
   namespace :api, format: 'json' do
-    resources :menus, only: [:index, :create]
+    resources :menus, only: [:index, :create, :delete]
     resources :restaurants, only: :index
-    resources :calories, only: [:index, :show, :delete]
+    resources :calories, only: [:index, :show]
   end
   get 'menus/index'
   get  '/signup',  to: 'users#new'

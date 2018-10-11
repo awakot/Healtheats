@@ -14,16 +14,6 @@ class Api::CaloriesController < ApplicationController
     @data = Calorie.find(params[:id])
   end
 
-  # メニューの更新のAPIは大変そうなので保留
-  # def update
-  # end
-
-  def delete
-    calorie = Calorie.find(params[:id])
-    calorie.destroy
-    render :index, status: :deleted
-  end
-
   private
 
   def menu_params

@@ -1,1 +1,1 @@
-json.data(@data, :id, :amount)
+json.extract!(@data, :id, :amount)

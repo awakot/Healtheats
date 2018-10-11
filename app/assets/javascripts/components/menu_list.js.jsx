@@ -14,28 +14,18 @@ var MenuBox = createReactClass({
   getInitialState() {
     return {data: []};
   },
-  handleMenuSubmit(menu) {
-    $.ajax({
-      url: this.props.url,
-      dataType: 'json',
-      type: 'POST',
-      data: menu,
-      success: function(data) {
-        this.setState({data: this.state.data.concat([data])});
-      }.bind(this),
-      error: function(status, err) {
-        console.error(this.props.url, status, err.toString());
-      }.bind(this)
-    });
-  },
   componentDidMount() {
     this.loadMenusFromServer();
     setInterval(this.loadMenusFromServer, this.props.pollInterval);
   },
+  reRenderMenuList(){
+    // this.loadMenusFromServer();
+    // this.menuList.forceUpdate();
+  },
   render() {
     return (
       <div className="menubox">
-        <MenuForm onMenuSubmit={this.handleMenuSubmit} ref={(menuForm) => { this.menuForm = menuForm }} />
+        <MenuForm />
         <table>
           <thead>
             <tr>
@@ -46,7 +36,8 @@ var MenuBox = createReactClass({
               <th>kcal</th>
             </tr>
           </thead>
-          <MenuList data={this.state.data}/>
+          <MenuList data={this.state.data} ref={(menuList) => { this.menuList = menuList; }}/>
+          {/* TODO: refはあとで使う */}
         </table>
       </div>
     );
@@ -78,7 +69,7 @@ var Menu = createReactClass({
       dataType: 'json',
       type: 'GET',
       success: function(data) {
-        this.state.calorie = data;
+        this.setState({ calorie: data });
       }.bind(this),
       error: function(status, err) {
         console.error(this.props.url, status, err.toString());
@@ -87,8 +78,8 @@ var Menu = createReactClass({
   },
   render() {
     this.getCalorie();
-    if (this.state.calorie !== undefined) {
-      var calorie_amount = this.state.calorie.data.amount
+    if (this.state.calorie_id !== undefined) {
+      var calorie_amount = this.state.calorie.amount
     }
     return (
       <tr className="menubox-list__item">
@@ -106,23 +97,40 @@ var Menu = createReactClass({
 })
 
 var MenuForm = createReactClass({
+  getInitialState() {
+    return {data: []};
+  },
+  handleMenuSubmit(menu) {
+    $.ajax({
+      url: "/api/menus",
+      dataType: 'json',
+      type: 'POST',
+      data: menu,
+      success: function(data) {
+        this.setState({data: this.state.data.concat([data])});
+      }.bind(this),
+      error: function(status, err) {
+        console.error(this.props.url, status, err.toString());
+      }.bind(this)
+    });
+  },
   handleSubmit(e){
     e.preventDefault();
+    this.calorieList.getCalorie();
     var name = this.name.value.trim();
     var description = this.description.value.trim();
     var price = this.price.value.trim();
-    var calorie_id = this.state.calorie_id.value;
+    var calorie_id = this.calorieList.state.calorie_id;
     var picture = this.picture.value.trim();
 
     if (!name || !description || !price || !calorie_id || !picture) {
       return;
     }
-    this.props.onMenuSubmit({name: name, description: description, price: price, calorie_id: calorie_id, picture: picture});
+    this.handleMenuSubmit({name: name, description: description, price: price, calorie_id: calorie_id, picture: picture});
     // ↑ここでcallback実行する！
     this.name.value = "";
     this.description.value = "";
     this.price.value = "";
-    this.state.calorie_id.value = "";
     this.picture.value = "";
     return;
   },
@@ -133,8 +141,7 @@ var MenuForm = createReactClass({
           <input type="text" placeholder="メニュー名" ref={(inputText) => { this.name = inputText; }} />
           <input type="text" placeholder="説明" ref={(inputText) => { this.description = inputText; }} />
           <input type="text" placeholder="価格" ref={(inputText) => { this.price = inputText; }} />
-          {/* <input type="text" placeholder="キロカロリー" ref={(inputText) => { this.calorie_id = inputText; }} />あとで消す */}
-          <Calories ref={(input) => { this.state = input; }} />
+          <Calories ref={(calories) => { this.calorieList = calories; }} />
           <input type="text" placeholder="アイコンまたは画像をアップロード" ref={(inputText) => { this.picture = inputText; }} />
           <input type="submit" value="登録" />
         </form>
@@ -162,15 +169,21 @@ var Calories = createReactClass ({
   componentDidMount() {
     this.loadCaloriesFromServer();
   },
+  setCalorie(event) {
+    this.setState({calorie_id: event.target.value});
+  },
+  getCalorie(event) {
+    this.setState({calorie_id: this.state.calorie_id});
+  },
   render () {
     var calorieNodes = this.state.data.map(function (calorie) {
       return (
         <option value={calorie.id}>{calorie.amount}</option>
       );
     });
-
     return (
-      <select className="calories-amount d-inline" ref={(opt) => { this.calorie_id = opt }}>
+      <select className="calories-amount d-inline" onChange={this.setCalorie}>
+        <option value={null}></option>
         {calorieNodes}
       </select>
     );
