@@ -23,10 +23,11 @@ var Categories = createReactClass({
     });
     var categoryNameDivs =
       Array.prototype.slice.call(
-        document.getElementsByClassName('categories-item__name--menu-name')
+        document.getElementsByClassName('categories-item__name--action')
       );
-
-    categoryNameDivs.map((div) => console.log(div));
+    categoryNameDivs.map(function (div) {
+      div.style.display = "none";
+    });
   },
   render() {
     return (
@@ -34,8 +35,8 @@ var Categories = createReactClass({
         <div className="categories-item__name">
           <div className="categories-item__name--action" onClick={this.handleClick}>
             {this.props.data.name}
-            {this.state.clicked ? <CategoryMenu menus={this.props.data.menus}/> : null}
           </div>
+          {this.state.clicked ? <CategoryMenu menus={this.props.data.menus}/> : null}
         </div>
       </div>
     )
