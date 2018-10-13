@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root to: 'categories#index'
 
   namespace :api, format: 'json' do
     resources :menus, only: :index # TODO: add :create
@@ -21,6 +22,7 @@ Rails.application.routes.draw do
 
   resources :users
   resources :categories, only: :index
+  resources :menus, only: :show
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

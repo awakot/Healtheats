@@ -1,2 +1,3 @@
-<h1>Categories#index</h1>
-<p>Find me in app/views/categories/index.html.erb</p>
+<h1>どんなランチが食べたいですか？</h1>
+<% json = @categories.preload(:menus).map { |category| category.as_json.merge({menus: category.menus.as_json}) } %>
+<%= react_component("CategoryMenuList", categories: json) %>
