@@ -49,8 +49,10 @@ var CategoryMenu = createReactClass({
       this.props.menus.map(function (menu) {
         return (
           <a className="categories-item__name--menu" href={"/menus/"+menu.id}>
-            <div className="categories-item__name--menu-name">{menu.name}</div>
-            <div className="categories-item__name--menu-description">{menu.description}</div>
+            <div className="categories-item__name--menu-name">メニュー名：{menu.name}</div>
+            <div className="categories-item__name--menu-description">説明：{menu.description}</div>
+            <br />
+            {/* この改行タグはあとで消す */}
           </a>
         );
       })
