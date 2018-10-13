@@ -1,4 +1,4 @@
-class TagsController < ApplicationController
+class Admin::TagsController < ApplicationController
   def new
     @tag = Tag.new
   end

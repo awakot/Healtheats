@@ -1,10 +1,18 @@
 Rails.application.routes.draw do
-  get 'restaurants/index'
+
   namespace :api, format: 'json' do
     resources :menus, only: :index # TODO: add :create
     resources :restaurants, only: :index
   end
-  get 'menus/index'
+
+  namespace :admin do
+    root to: 'menus#index'
+    resources :menus, only: :index
+    resources :restaurants, only: :index
+    resources :categories
+    resources :tags
+  end
+
   get  '/signup',  to: 'users#new'
   post '/signup',  to: 'users#create'
   get    '/login',   to: 'sessions#new'
@@ -12,10 +20,7 @@ Rails.application.routes.draw do
   delete '/logout',  to: 'sessions#destroy'
 
   resources :users
-  resources :categories
-  resources :tags
-
-
+  resources :categories, only: :index
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
