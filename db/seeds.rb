@@ -29,8 +29,8 @@ end
 5.times do |time|
   time = time.to_s
 
-  calorie_id_menu_1 = Calorie.find_by(amount: 200)
-  restaurant_id_menu_1 = Restaurant.find_by(name: "グリーンブラザーズ")
+  calorie_id_menu_1 = Calorie.find_by(amount: 200).id
+  restaurant_id_menu_1 = Restaurant.find_by(name: "グリーンブラザーズ").id
   menu_1 = Menu.create(
     name: "チキンサラダ_" + time,
     description: "タンパク質と食物繊維",
@@ -43,8 +43,8 @@ end
   )
   menu_1.categories << Category.find_by(name: "野菜たっぷりサラダ")
 
-  calorie_id_menu_2 = Calorie.find_by(amount: 700)
-  restaurant_id_menu_2 = Restaurant.find_by(name: "ガブリシェア")
+  calorie_id_menu_2 = Calorie.find_by(amount: 700).id
+  restaurant_id_menu_2 = Restaurant.find_by(name: "ガブリシェア").id
   menu_2 = Menu.create(
     name: "ステーキ定食_" + time,
     description: "タンパク質がっつり",
@@ -57,8 +57,8 @@ end
   )
   menu_2.categories << Category.find_by(name: "がっつりお肉")
 
-  calorie_id_menu_3 = Calorie.find_by(amount: 500)
-  restaurant_id_menu_3 = Restaurant.find_by(name: "権八")
+  calorie_id_menu_3 = Calorie.find_by(amount: 500).id
+  restaurant_id_menu_3 = Restaurant.find_by(name: "権八").id
   menu_3 = Menu.create(
     name: "焼き魚定食_" + time,
     description: "資質少なめタンパク質",
