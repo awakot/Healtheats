@@ -29,6 +29,19 @@ var Categories = createReactClass({
       div.style.display = "none";
     });
   },
+  getCalorie(){
+    $.ajax({
+      url: "/api/calories/".concat(this.props.data.calorie_id),
+      dataType: 'json',
+      type: 'GET',
+      success: function(data) {
+        this.setState({ calorie: data });
+      }.bind(this),
+      error: function(status, err) {
+        console.error(this.props.url, status, err.toString());
+      }.bind(this)
+    });
+  },
   render() {
     this.getCalorie();
     if (this.state.calorie !== undefined) {
@@ -53,7 +66,7 @@ var CategoryMenu = createReactClass({
             <span className="categories-list__item--menu-kcal">100kcal</span>
             <span className="categories-list__item--menu-price">¥{menu.price}</span>
             <span className="categories-list__item--menu-desc">{menu.description}</span>
-            <span className="categories-list__item--menu-pic">{menu.picture}</span>
+            <img className="categories-list__item--menu-pic" src={menu.picture} />
           </a>
         );
       })
