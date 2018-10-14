@@ -78,7 +78,7 @@ var Menu = createReactClass({
   },
   render() {
     this.getCalorie();
-    if (this.state.calorie_id !== undefined) {
+    if (this.state.calorie !== undefined) {
       var calorie_amount = this.state.calorie.amount
     }
     return (
