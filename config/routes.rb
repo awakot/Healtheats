@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :menus, only: [:index, :create, :delete]
     resources :restaurants, only: :index
     resources :calories, only: [:index, :show]
+    resources :image_uploaders, only: :create
   end
 
   namespace :admin do

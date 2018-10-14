@@ -114,6 +114,36 @@ var MenuForm = createReactClass({
       }.bind(this)
     });
   },
+  handlePicSelected(event){
+    this.picture = event.target.files[0];
+  },
+  handlePicUpload(){
+    var picture = this.picture;
+    var formData = new FormData();
+    formData.append("picture", picture);
+    $.ajax({
+      url: "/api/image_uploaders",
+      dataType: 'json',
+      type: 'POST',
+      data: formData,
+      processData: false,
+      contentType: false,
+      success: function(data) {
+        this.setState({picture: this.state.data.concat([data])});
+      }.bind(this),
+      error: function(status, err) {
+        console.error(this.props.url, status, err.toString());
+      }.bind(this)
+    });
+  },
+  showUploadedPic(){
+    if (this.state.picture !== undefined && this.state.picture !== null){
+      return(
+        <img src={this.state.picture[0].file_path} className="uploaded-pic" />
+      );
+      // TODO: classnameをちゃんと考える
+    }
+  },
   handleSubmit(e){
     e.preventDefault();
     this.calorieList.getCalorie();
@@ -121,28 +151,31 @@ var MenuForm = createReactClass({
     var description = this.description.value.trim();
     var price = this.price.value.trim();
     var calorie_id = this.calorieList.state.calorie_id;
-    var picture = this.picture.value.trim();
+    var picture = this.state.picture[0].file_path;
 
     if (!name || !description || !price || !calorie_id || !picture) {
       return;
     }
     this.handleMenuSubmit({name: name, description: description, price: price, calorie_id: calorie_id, picture: picture});
-    // ↑ここでcallback実行する！
+
     this.name.value = "";
     this.description.value = "";
     this.price.value = "";
-    this.picture.value = "";
+    this.setState({picture: null});
     return;
   },
   render(){
     return (
       <div className="menubox-form">
+        <input type="file" onChange={this.handlePicSelected} />
+        <input type="submit" value="アップロード" onClick={this.handlePicUpload} />
+        {this.showUploadedPic()}
+        <br />
         <form className="menuForm" onSubmit={this.handleSubmit}>
           <input type="text" placeholder="メニュー名" ref={(inputText) => { this.name = inputText; }} />
           <input type="text" placeholder="説明" ref={(inputText) => { this.description = inputText; }} />
           <input type="text" placeholder="価格" ref={(inputText) => { this.price = inputText; }} />
           <Calories ref={(calories) => { this.calorieList = calories; }} />
-          <input type="text" placeholder="アイコンまたは画像をアップロード" ref={(inputText) => { this.picture = inputText; }} />
           <input type="submit" value="登録" />
         </form>
       </div>
