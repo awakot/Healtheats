@@ -48,22 +48,18 @@ ActiveRecord::Schema.define(version: 2018_10_06_121927) do
     t.string "picture", null: false
     t.bigint "calorie_id"
     t.bigint "restaurant_id"
-    t.bigint "category_id"
-    t.bigint "tag_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["calorie_id"], name: "index_menus_on_calorie_id"
-    t.index ["category_id"], name: "index_menus_on_category_id"
     t.index ["restaurant_id"], name: "index_menus_on_restaurant_id"
-    t.index ["tag_id"], name: "index_menus_on_tag_id"
   end
 
   create_table "restaurants", force: :cascade do |t|
     t.integer "zip_code", null: false
     t.string "address", null: false
     t.string "name", null: false
-    t.decimal "latitude", precision: 9, scale: 6, null: false
-    t.decimal "longitude", precision: 9, scale: 6, null: false
+    t.decimal "latitude", precision: 10, scale: 6, null: false
+    t.decimal "longitude", precision: 10, scale: 6, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -92,7 +88,5 @@ ActiveRecord::Schema.define(version: 2018_10_06_121927) do
   end
 
   add_foreign_key "menus", "calories", column: "calorie_id"
-  add_foreign_key "menus", "categories"
   add_foreign_key "menus", "restaurants"
-  add_foreign_key "menus", "tags"
 end
