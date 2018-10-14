@@ -30,6 +30,10 @@ var Categories = createReactClass({
     });
   },
   render() {
+    this.getCalorie();
+    if (this.state.calorie !== undefined) {
+      var calorie_amount = this.state.calorie.amount
+    }
     return (
       <div className="categories-list__item">
         <div className="categories-list__item--name" onClick={this.handleClick}>{this.props.data.name}</div>

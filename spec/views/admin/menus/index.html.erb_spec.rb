@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "menus/index", type: :view do
+RSpec.describe "/admin/menus/index", type: :view do
   it "shows menus list" do
     render
     expect(rendered).to have_css("h1", text: "メニュー一覧")

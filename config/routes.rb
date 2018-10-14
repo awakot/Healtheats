@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
   root to: 'categories#index'
 
-  namespace :api, format: 'json' do
-    resources :menus, only: :index # TODO: add :create
+  namespace :api do
+    resources :menus, only: [:index, :create, :delete]
     resources :restaurants, only: :index
+    resources :calories, only: [:index, :show]
   end
 
   namespace :admin do
