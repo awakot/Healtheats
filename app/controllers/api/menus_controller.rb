@@ -2,23 +2,27 @@ class Api::MenusController < ApplicationController
   protect_from_forgery :except => ["create"] # TODO: あとで消したい
 
   def index
-    # GET /api/menus.json で仮のJSONを返す
-    # TODO: DBから値取得
-    @data = [
-      { "name": "さらだ", "description": "おいしいさらだ", "price": 1200, "kcalorie": 298 },
-      { "name": "にく", "description": "おいしいにく", "price": 1320, "kcalorie": 430 },
-    ]
+    @data = Menu.all.order("id DESC")
   end
 
   def create
-    # @menu = Menu.create(menu_params)
-    # TODO: commit data
+    @menu = Menu.create(menu_params)
     render :index, status: :created
+  end
+
+  # メニューの更新のAPIは大変そうなので保留
+  # def update
+  # end
+
+  def delete
+    menu = Menu.find(params[:id])
+    menu.destroy
+    render :index, status: :deleted
   end
 
   private
 
   def menu_params
-    params.permit(:name, :description, :price, :kcalorie)
+    params.permit(:name, :description, :price, :calorie_id, :picture)
   end
 end
