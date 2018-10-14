@@ -6,7 +6,7 @@ var CategoryMenuList = createReactClass({
       );
     });
     return (
-      <div className="categories">
+      <div className="categories-list">
         {categoryNodes}
       </div>
     );
@@ -23,7 +23,7 @@ var Categories = createReactClass({
     });
     var categoryNameDivs =
       Array.prototype.slice.call(
-        document.getElementsByClassName('categories-item__name--action')
+        document.getElementsByClassName('categories-list__item--name')
       );
     categoryNameDivs.map(function (div) {
       div.style.display = "none";
@@ -31,13 +31,9 @@ var Categories = createReactClass({
   },
   render() {
     return (
-      <div className="categories-item">
-        <div className="categories-item__name">
-          <div className="categories-item__name--action" onClick={this.handleClick}>
-            {this.props.data.name}
-          </div>
-          {this.state.clicked ? <CategoryMenu menus={this.props.data.menus}/> : null}
-        </div>
+      <div className="categories-list__item">
+        <div className="categories-list__item--name" onClick={this.handleClick}>{this.props.data.name}</div>
+        {this.state.clicked ? <CategoryMenu menus={this.props.data.menus}/> : null}
       </div>
     )
   }
@@ -48,11 +44,12 @@ var CategoryMenu = createReactClass({
     return (
       this.props.menus.map(function (menu) {
         return (
-          <a className="categories-item__name--menu" href={"/menus/"+menu.id}>
-            <div className="categories-item__name--menu-name">メニュー名：{menu.name}</div>
-            <div className="categories-item__name--menu-description">説明：{menu.description}</div>
-            <br />
-            {/* この改行タグはあとで消す */}
+          <a className="categories-list__item--menu" href={"/menus/"+menu.id}>
+            <span className="categories-list__item--menu-name">{menu.name}</span>
+            <span className="categories-list__item--menu-kcal">100kcal</span>
+            <span className="categories-list__item--menu-price">¥{menu.price}</span>
+            <span className="categories-list__item--menu-desc">{menu.description}</span>
+            <span className="categories-list__item--menu-pic">{menu.picture}</span>
           </a>
         );
       })

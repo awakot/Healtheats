@@ -1,3 +1,8 @@
-<h1>どんなランチが食べたいですか？</h1>
-<% json = @categories.preload(:menus).map { |category| category.as_json.merge({menus: category.menus.as_json}) } %>
-<%= react_component("CategoryMenuList", categories: json) %>
+<div class="categories">
+  <div class="categories-title">
+    <div class="categories-title__line1">どんなランチが</div>
+    <div class="categories-title__line2">食べたいですか？</div>
+  </div>
+  <% json = @categories.preload(:menus).map { |category| category.as_json.merge({menus: category.menus.as_json}) } %>
+  <%= react_component("CategoryMenuList", categories: json) %>
+</div>
