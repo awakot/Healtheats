@@ -1,4 +1,5 @@
 class MenusController < ApplicationController
-  def index
+  def show
+    @menu = Menu.find(params[:id])
   end
 end
