@@ -1,13 +1,13 @@
-<h1>Add New Tag</h1>
+<h1>新しいTagの追加</h1>
 
 <%= form_for @tag do |f| %>
 
-  <p>
+  <p class="field">
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </p>
 
-  <p>
+  <p class="button">
     <%= f.submit %>
   </p>
 

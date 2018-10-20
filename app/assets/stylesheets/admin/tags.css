@@ -1,0 +1,21 @@
+.field{
+
+  font: 95% Arial, Helvetica, sans-serif;
+max-width: 400px;
+margin: 10px auto;
+padding: 16px;
+background: #F7F7F7;
+
+}
+.button:hover{
+	background: #2EBC99;
+}
+
+.button{
+  max-width: 400px;
+
+  margin: 10px auto;
+  padding: 16px;
+  color: #fff;
+
+}
