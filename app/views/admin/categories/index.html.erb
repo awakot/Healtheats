@@ -1,1 +1,11 @@
-<h1>All categories</h1>
+<h1>カテゴリー一覧</h1>
+
+    <ul class='categories-names'>
+      <% @categories.each do |category| %>
+        <li class='category-name'>
+          <%= category.name %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
