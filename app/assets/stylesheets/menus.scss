@@ -5,18 +5,25 @@
   background-color: #FF9935;
   height: 100%;
   min-height: 100%;
-  &__title{
+  &__name{
+    color: #fff;
+    font-weight: 700;
+    padding: 20px 5px 15px;
     margin: 0;
   }
   &__item{
-    &--name{
-      color: #fff;
-    }
+    background-color: #fff;
+    margin: 10px 5px;
+    padding: 15px 10px;
+    border-radius: 5px;
     &--desc{
-
+      margin: 0;
+    }
+    &--title{
+      font-weight: 700;
+      font-size: 1.2em;
     }
     &--price{
-
     }
     &--calorie{
 
@@ -27,14 +34,24 @@
     }
   }
   &__restaurant{
+    background-color: #fff;
+    margin: 10px 5px;
+    padding: 15px 10px;
+    border-radius: 5px;
+    &--title{
+      margin: 5px 0;
+      font-size: 1.2em;
+      font-weight: 700;
+    }
     &--name{
-
+      margin: 5px 0 3px;
+      font-size: 1.1em;
     }
     &--zip_code{
-
+      margin: 0;
     }
     &--address{
-
+      margin: 0;
     }
   }
 }
