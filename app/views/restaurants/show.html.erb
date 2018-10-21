@@ -1,0 +1,23 @@
+<div class="restaurant-detail">
+  <%= image_tag 'restImg.jpeg'%>
+
+
+  <div class="restaurant-detail__restaurant">
+    <h2 class="restaurant-detail__restaurant--title">店舗情報</h2>
+    <p class="restaurant-detail__restaurant--name"><%= @restaurant.name %></p>
+    <p class="restaurant-detail__restaurant--zip_code">〒<%= @restaurant.zip_code %></p>
+    <p class="restaurant-detail__restaurant--address"><%= @restaurant.address %></p>
+    ここに地図を入れる
+  </div>
+  <div class="restaurant-detail__restaurant">
+    <ul class="restaurant-menus">
+      <% @menus.each do |menu| %>
+        <li>
+          <%= link_to menu.name, menu %>
+        </li>
+      <% end %>
+    </ul>
+
+  </div>
+
+</div>
