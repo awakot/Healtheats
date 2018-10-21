@@ -9,15 +9,13 @@
     <p class="restaurant-detail__restaurant--address"><%= @restaurant.address %></p>
     ここに地図を入れる
   </div>
-  <div class="restaurant-detail__restaurant">
     <ul class="restaurant-menus">
       <% @menus.each do |menu| %>
-        <li>
+        <li　class="restaurant-menu">
           <%= link_to menu.name, menu %>
         </li>
       <% end %>
     </ul>
 
-  </div>
 
 </div>
