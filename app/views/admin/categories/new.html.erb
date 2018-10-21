@@ -1,6 +1,6 @@
 <h1>新しいカテゴリーを追加する</h1>
 
-<%= form_for @category do |f| %>
+<%= form_for @category, url: admin_categories_path do |f| %>
 
   <p class="form">
     <%= f.label :name %><br>
