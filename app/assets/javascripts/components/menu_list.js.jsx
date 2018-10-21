@@ -29,24 +29,7 @@ var Categories = createReactClass({
       div.style.display = "none";
     });
   },
-  getCalorie(){
-    $.ajax({
-      url: "/api/calories/".concat(this.props.data.calorie_id),
-      dataType: 'json',
-      type: 'GET',
-      success: function(data) {
-        this.setState({ calorie: data });
-      }.bind(this),
-      error: function(status, err) {
-        console.error(this.props.url, status, err.toString());
-      }.bind(this)
-    });
-  },
   render() {
-    this.getCalorie();
-    if (this.state.calorie !== undefined) {
-      var calorie_amount = this.state.calorie.amount
-    }
     return (
       <div className="categories-list__item">
         <div className="categories-list__item--name" onClick={this.handleClick}>{this.props.data.name}</div>
@@ -61,15 +44,44 @@ var CategoryMenu = createReactClass({
     return (
       this.props.menus.map(function (menu) {
         return (
-          <a className="categories-list__item--menu" href={"/menus/"+menu.id}>
-            <span className="categories-list__item--menu-name">{menu.name}</span>
-            <span className="categories-list__item--menu-kcal">100kcal</span>
-            <span className="categories-list__item--menu-price">¥{menu.price}</span>
-            <span className="categories-list__item--menu-desc">{menu.description}</span>
-            <img className="categories-list__item--menu-pic" src={menu.picture} />
-          </a>
+          <Menu menu={menu} />
         );
       })
     );    
   }
 });
+
+var Menu = createReactClass({
+  getInitialState() {
+    return { calorie_amount: null };
+  },
+  getCalorie(calorie_id){
+    if (this.state.calorie_amount !== null){
+      return
+    };
+    $.ajax({
+      url: "/api/calories/".concat(calorie_id),
+      dataType: 'json',
+      type: 'GET',
+      success: function(calorie) {
+        this.setState({ calorie_amount: calorie.amount });
+      }.bind(this),
+      error: function(status, err) {
+        console.error(this.props.url, status, err.toString());
+      }.bind(this)
+    });
+  },
+  render(){
+    var menu = this.props.menu;
+    this.getCalorie(menu.calorie_id);
+    return(
+      <a className="categories-list__item--menu" href={"/menus/"+menu.id}>
+        <span className="categories-list__item--menu-name">{menu.name}</span>
+        <span className="categories-list__item--menu-kcal">{this.state.calorie_amount}kcal</span>
+        <span className="categories-list__item--menu-price">¥{menu.price}</span>
+        <span className="categories-list__item--menu-desc">{menu.description}</span>
+        <img className="categories-list__item--menu-pic" src={menu.picture} />
+      </a>
+    );
+  }
+})
