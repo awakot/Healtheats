@@ -47,3 +47,15 @@ body{
 .closeMenuBtn{
   display: none;
 }
+
+.openMenuBtn-hamburger{
+  display: block;
+  width: 30px;
+  height: 2px;
+  margin: 7px 10px;
+  background-color: #fff;
+  border: 1px solid #fff;
+  &:first-child{
+    margin: 15px 10px 7px;
+  }
+}
