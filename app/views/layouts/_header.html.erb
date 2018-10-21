@@ -1,11 +1,12 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
-  <div class="container">
-    <%= link_to "Healtheats", '/', id: "logo" %>
+<button class="openMenuBtn" onClick="openMenu();">menu</button>
+<header>
+  <div class="container navbar navbar-fixed-top navbar-inverse">
     <nav>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Home",   '/' %></li>
-        <li><%= link_to "Category",   categories_path %></li>
+        <li><%= link_to "Healtheats", '/', id: "logo" %></li>
+        <li><%= link_to "Tags",   "#" %></li>
         <li><%= link_to "Log in", login_path %></li>
+        <button class="closeMenuBtn" onClick="closeMenu();">close</button>
       </ul>
     </nav>
   </div>

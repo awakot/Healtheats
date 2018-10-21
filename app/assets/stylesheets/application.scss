@@ -23,9 +23,27 @@ html{
   min-height: 100%;
 }
 
- body{
-   margin: 0;
-   height: -webkit-fill-available;
-   min-height: 100%;
-   bottom: 0;
- }
+body{
+  margin: 0;
+  height: -webkit-fill-available;
+  min-height: 100%;
+  bottom: 0;
+}
+
+@media screen and (max-width: 400px){
+  .navbar{
+    display: none;
+    z-index: 0;
+  }
+}
+
+.openMenuBtn, .closeMenuBtn{
+  cursor: pointer;
+  float: right;
+  color: #fff;
+  z-index: 1035;
+}
+
+.closeMenuBtn{
+  display: none;
+}
