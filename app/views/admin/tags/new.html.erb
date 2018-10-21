@@ -1,6 +1,6 @@
 <h1>新しいTagの追加</h1>
 
-<%= form_for @tag do |f| %>
+<%= form_for @tag, url: admin_tags_path do |f| %>
 
   <p class="field">
     <%= f.label :name %><br>

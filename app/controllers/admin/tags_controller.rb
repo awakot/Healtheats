@@ -11,7 +11,7 @@ class Admin::TagsController < ApplicationController
   def update
     respond_to do |format|
       if @tag.update(tag_params)
-        format.html { redirect_to @tag, notice: 'タグが更新されました。' }
+        format.html { redirect_to admin_tags_path , notice: 'タグが更新されました。' }
       else
         format.html { render :edit}
       end
@@ -25,7 +25,7 @@ class Admin::TagsController < ApplicationController
   def create
     @tag = Tag.new(tag_params)
     if @tag.save
-      redirect_back_or @tag
+      redirect_to admin_tags_path
     else
       render 'new'
     end
