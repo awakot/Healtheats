@@ -19,13 +19,13 @@
  }
 
 html{
-  height: 100%;
+  height: auto;
   min-height: 100%;
-
 }
 
  body{
    margin: 0;
-   height: 100%;
+   height: -webkit-fill-available;
    min-height: 100%;
+   bottom: 0;
  }
