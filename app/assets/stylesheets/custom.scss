@@ -1,6 +1,14 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+.navbar{ // override bootstrap
+  background-color: rgba(255, 255, 255, 0.8);
+  border: none;
+  .navbar-nav > li > a{
+    color: #777;
+  }
+}
+
 footer {
   padding: 30px 0 35px;
   color: #FFF;

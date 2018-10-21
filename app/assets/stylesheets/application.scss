@@ -40,12 +40,17 @@ body{
 .openMenuBtn, .closeMenuBtn{
   cursor: pointer;
   float: right;
-  color: #fff;
   z-index: 1035;
 }
 
+.openMenuBtn{
+  color: #fff;
+}
+
 .closeMenuBtn{
+  color: #777;
   display: none;
+  margin-right: 10px;
 }
 
 .openMenuBtn-hamburger{
