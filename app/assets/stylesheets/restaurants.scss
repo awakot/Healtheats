@@ -34,7 +34,7 @@
       padding: 0;
       position: relative;
     }
-    &--names, --name{
+    &--names, &--name{
       line-height: 1.5;
       padding: 0.5em 0.5em 0.5em 1.7em;
       list-style-type: none!important;
@@ -43,7 +43,7 @@
       text-shadow: 1px 1px 1px whitesmoke;/*文字を立体的に*/
       color: black;
     }
-    &--names, --name:before{
+    &--names, &--name:before{
     font-family: "Font Awesome 5 Free";
     content: "\f138";
     position: absolute;
