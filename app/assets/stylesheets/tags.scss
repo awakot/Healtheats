@@ -9,20 +9,18 @@
     padding: 0 1em;
     &-title{
       &__tags-names{
-        font-size: $cat-list-font-size;
-        font-weight: 700;
-        line-height: 1.7em;
-        padding: 1.1em 0.5em;
-        margin: 0.5em auto;
-        border: 3px solid #FFF;
-        border-radius: 0.5em;
-        background: #FFF;
-        color: #553;
+        padding: 0;
+        position: relative;
+        line-height: 1.5;
+        padding: 0.5em 0.5em 0.5em 1.7em;
+        list-style-type: none!important;
+        text-shadow: 1px 1px 1px whitesmoke;/*文字を立体的に*/
+        color: black;
         &__tag-name{
           border: 3px solid #FFF;
           border-radius: 0.5em;
           background: #FFF;
-          color: #553;
+          color: black;
           text-decoration: none;
           display: block;
           padding: 0.7em;
@@ -65,6 +63,7 @@
   @include tags-list($cat-list-font-size: 1.5em);
 }
 
+//
 // .tags-names {
 //   padding: 0;
 //   position: relative;
@@ -79,11 +78,11 @@
 //   text-shadow: 1px 1px 1px whitesmoke;/*文字を立体的に*/
 //   color: black;
 // }
-//
-// .tags-names .tag-name:before { /*疑似要素*/
-//   font-family: "Font Awesome 5 Free";
-//   content: "\f138";
-//   position: absolute;
-//   left : 0.5em; /*左端からのアイコンまでの距離*/
-//   color: orange; /*アイコン色*/
-// }
+
+.tags-title__tags-names .tags-title__tags-names__tag-name:before { /*疑似要素*/
+  font-family: "Font Awesome 5 Free";
+  content: "\f138";
+  position: absolute;
+  left : 0.5em; /*左端からのアイコンまでの距離*/
+  color: white; /*アイコン色*/
+}
