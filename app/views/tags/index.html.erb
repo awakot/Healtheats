@@ -2,12 +2,12 @@
   <div class="tags-title">
     <div class="tags-title__line1">どんなランチが</div>
     <div class="tags-title__line2">食べたいですか？</div>
-    <ul class='tags-names'>
-      <% @tags.each do |tag| %>
-        <li class='tag-name'>
-          <%= link_to tag.name, tag %>
-        </li>
-      <% end %>
-    </ul>
+      <ul class='tags-title__tags-names'>
+        <% @tags.each do |tag| %>
+          <li class='tags-title__tags-names__tag-name'>
+            <%= link_to tag.name, tag %>
+          </li>
+        <% end %>
+      </ul>
   </div>
 </div>

@@ -1,14 +1,17 @@
-<h1>新しいTagの追加</h1>
+<div class="tag__form">
+  <h1>新しいTagの追加</h1>
 
-<%= form_for @tag, url: admin_tags_path do |f| %>
 
-  <p class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </p>
+  <%= form_for @tag, url: admin_tags_path do |f| %>
 
-  <p class="button">
-    <%= f.submit %>
-  </p>
+    <p class="tag__form--field">
+      <%= f.label :name %><br>
+      <%= f.text_field :name %>
+    </p>
 
-<% end %>
+    <p class="tag__form--button">
+      <%= f.submit class: "button" %>
+    </p>  </p>
+
+    <% end %>
+</div>

@@ -7,20 +7,18 @@
     height: 100%;
     min-height: 100%;
     padding: 0 1em;
-    &-list{
-      &__item{
-        &--name{
-          font-size: $cat-list-font-size;
-          font-weight: 700;
-          line-height: 1.7em;
-          padding: 1.1em 0.5em;
-          margin: 0.5em auto;
-          border: 3px solid #FFF;
-          border-radius: 0.5em;
-          background: #FFF;
-          color: #553;
-        }
-        &--menu{
+    &-title{
+      &__tags-names{
+        font-size: $cat-list-font-size;
+        font-weight: 700;
+        line-height: 1.7em;
+        padding: 1.1em 0.5em;
+        margin: 0.5em auto;
+        border: 3px solid #FFF;
+        border-radius: 0.5em;
+        background: #FFF;
+        color: #553;
+        &__tag-name{
           border: 3px solid #FFF;
           border-radius: 0.5em;
           background: #FFF;
@@ -29,35 +27,6 @@
           display: block;
           padding: 0.7em;
           margin: 0.5em 0;
-          &-name{
-            display: inline-block;
-            font-size: 1.6em;
-            font-weight: 700;
-            padding: 0 0.5em 0 0;
-          }
-          &-kcal{
-            font-size: 1em;
-            display: inline-block;
-            padding: 0 0.5em 0 0;
-          }
-          &-price{
-            font-size: 1em;
-            display: inline-block;
-          }
-          &-desc{
-            font-size: 1.2em;
-            clear: both;
-            display: block;
-            margin: 0.3em 0 0;
-            text-overflow: ellipsis;
-            text-decoration: none;
-          }
-          &-pic{
-            display: block;
-            margin: 0.3em 0 0;
-            max-width: 300px;
-            // TODO
-          }
         }
       }
     }
@@ -96,25 +65,25 @@
   @include tags-list($cat-list-font-size: 1.5em);
 }
 
-.tags-names {
-  padding: 0;
-  position: relative;
-}
-
-.tags-names .tag-name {
-  line-height: 1.5;
-  padding: 0.5em 0.5em 0.5em 1.7em;
-  list-style-type: none!important;
-  background: -webkit-linear-gradient(top, #whitesmoke 0%, whitesmoke 100%);/*グラデーション*/
-  background: linear-gradient(to bottom, whitesmoke 0%, #dadada 100%);/*グラデーション*/
-  text-shadow: 1px 1px 1px whitesmoke;/*文字を立体的に*/
-  color: black;
-}
-
-.tags-names .tag-name:before { /*疑似要素*/
-  font-family: "Font Awesome 5 Free";
-  content: "\f138";
-  position: absolute;
-  left : 0.5em; /*左端からのアイコンまでの距離*/
-  color: orange; /*アイコン色*/
-}
+// .tags-names {
+//   padding: 0;
+//   position: relative;
+// }
+//
+// .tags-names .tag-name {
+//   line-height: 1.5;
+//   padding: 0.5em 0.5em 0.5em 1.7em;
+//   list-style-type: none!important;
+//   background: -webkit-linear-gradient(top, #whitesmoke 0%, whitesmoke 100%);/*グラデーション*/
+//   background: linear-gradient(to bottom, whitesmoke 0%, #dadada 100%);/*グラデーション*/
+//   text-shadow: 1px 1px 1px whitesmoke;/*文字を立体的に*/
+//   color: black;
+// }
+//
+// .tags-names .tag-name:before { /*疑似要素*/
+//   font-family: "Font Awesome 5 Free";
+//   content: "\f138";
+//   position: absolute;
+//   left : 0.5em; /*左端からのアイコンまでの距離*/
+//   color: orange; /*アイコン色*/
+// }
