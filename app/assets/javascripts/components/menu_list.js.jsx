@@ -2,7 +2,7 @@ var CategoryMenuList = createReactClass({
   render() {
     var categoryNodes = this.props.categories.map(function (cat) {
       return (
-        <Categories data={cat} />
+        <Categories data={cat} key={cat.id} />
       );
     });
     return (
@@ -44,7 +44,7 @@ var CategoryMenu = createReactClass({
     return (
       this.props.menus.map(function (menu) {
         return (
-          <Menu menu={menu} />
+          <Menu menu={menu} key={menu.id} />
         );
       })
     );    
