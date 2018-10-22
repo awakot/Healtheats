@@ -1,12 +1,49 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-.navbar{ // override bootstrap
-  background-color: rgba(255, 255, 255, 0.8);
-  border: none;
-  .navbar-nav > li > a{
-    color: #777;
+@media screen and (min-width: 401px){
+  .navbar{ // override bootstrap
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+    margin: 0;
+    width: 100%;
+    .navbar-nav > li{
+      &:first-child{ // Healtheatsの文字
+        float: left;
+        font-size: 1.4em;
+        font-weight: 700;
+      }
+      &:nth-child(2){ // Tags
+        float: right;
+      }
+      &:nth-child(3){ // Log in
+        float: right;
+      }
+      a {
+        color: #777;
+        &:hover{
+          color: #999;
+        }
+      }  
+    }
   }
+  .navbar-right{
+    float: left !important;
+    margin-right: -15px;
+    width: 100%;
+  }
+  .openMenuBtn{
+    display: none;
+  }
+}
+@media screen and (max-width: 400px){
+  .navbar{ // override bootstrap
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+    .navbar-nav > li > a{
+      color: #777;
+    }
+  }  
 }
 
 footer {
