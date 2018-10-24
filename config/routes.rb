@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   resources :categories, only: :index
   resources :menus, only: :show
   resources :activities, only: [:index, :create, :thanks]
+  resources :restaurants, only: :show
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
