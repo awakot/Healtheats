@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'activities/create'
+  get 'activities/index'
   root to: 'categories#index'
 
   namespace :api do
