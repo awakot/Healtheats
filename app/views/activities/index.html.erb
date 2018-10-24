@@ -1,2 +1,6 @@
-<h1>Activities#index</h1>
-<p>Find me in app/views/activities/index.html.erb</p>
+<h1>今月食べたメニュー</h1>
+
+<% @menus.each do |menu| %>
+  <div><%= menu.name %></div>
+  <div><%= @menu_ids_with_date[menu.id] %></div>
+<% end %>

@@ -21,11 +21,11 @@ Rails.application.routes.draw do
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
-  post "/activities", to: "activities#create"
 
   resources :users
   resources :categories, only: :index
   resources :menus, only: :show
+  resources :activities, only: [:index, :create, :thanks]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

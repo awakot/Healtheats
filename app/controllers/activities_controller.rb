@@ -7,6 +7,12 @@ class ActivitiesController < ApplicationController
   end
 
   def index
+    @menu_ids_with_date = {}
+    UserMenu.all
+            .where(user_id: current_user.id)
+            .map{ |user_menu| @menu_ids_with_date[user_menu.menu_id] = user_menu.created_at }
+
+    @menus = Menu.all.where(id: @menu_ids_with_date.keys.to_a)
   end
 
   def thanks
