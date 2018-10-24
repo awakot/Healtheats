@@ -3,5 +3,6 @@ class MenusController < ApplicationController
     @menu = Menu.find(params[:id])
     @calorie = Calorie.find(@menu.calorie_id).amount
     @restaurant = Restaurant.find(@menu.restaurant_id)
+    @activity = UserMenu.new
   end
 end

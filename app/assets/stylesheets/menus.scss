@@ -54,4 +54,20 @@
       margin: 0;
     }
   }
+  &__item--posting_record{
+    font-size: 1.3em;
+    font-weight: 700;
+    color: #fff;
+    background-color: #75cf11;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    outline: none;
+    padding: 10px 15px;
+    appearance: none; 
+  }
+  #new_user_menu{
+    margin: 20px auto 5px;
+    text-align: center;
+  }
 }

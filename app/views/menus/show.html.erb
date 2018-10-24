@@ -6,6 +6,11 @@
     <span class="menu-detail__item--price">¥<%= @menu.price %></span>
     <span class="menu-detail__item--calorie"><%= @calorie %>kcal</span>
     <p class="menu-detail__item--desc"><%= @menu.description %></p>
+
+    <%= form_for(@activity, url: activities_path, method: :post) do |f| %>
+      <input type="submit" value="このメニューを食べた！" class="menu-detail__item--posting_record">
+      <%= hidden_field :menu, :id %>
+    <% end %>
   </div>
 
   <div class="menu-detail__restaurant">

@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'activities/create'
-  get 'activities/index'
   root to: 'categories#index'
 
   namespace :api do
@@ -23,6 +21,7 @@ Rails.application.routes.draw do
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
+  post "/activities", to: "activities#create"
 
   resources :users
   resources :categories, only: :index
