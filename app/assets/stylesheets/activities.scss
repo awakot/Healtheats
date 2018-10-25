@@ -5,3 +5,43 @@
 .activity-detail{
   display: none;
 }
+
+.taken_menus{
+  background: #FF9935;
+  padding: 0 1em;
+  &__title{
+    margin: 0;
+    color: #fff;
+    padding: 2em 0 1.5em;
+    box-sizing: border-box;
+    font-weight: 700;
+  }
+  &__item--wrapper{
+
+  }
+}
+
+.taken_menu{
+  position: relative;
+  &__btn{
+  }
+  &__detail{
+    position: absolute;
+    top: 0;
+    background-color: #fff;
+    border-radius: 5px;
+    width: 100%;
+    min-width: 100%;
+    margin: 0 20px;
+    padding: 10px;
+    &--date{
+
+    }
+    &--name{
+
+    }
+    &--desc, &--price, &--pic, &--calorie{
+      
+    }
+  }
+}
