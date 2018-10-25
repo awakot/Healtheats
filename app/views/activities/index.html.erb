@@ -3,8 +3,13 @@
 
   <% @menus.each do |menu| %>
     <div class="taken_menus__item--wrapper">
-      <div><%= date = @menu_ids_with_date[menu.id].to_date.to_s.gsub("-","/").slice(5..9) %></div>
-      <div><%= menu.name %></div>
+      <div class="taken_menus__item--wrapper__child">
+        <%= date = @menu_ids_with_date[menu.id].to_date.to_s.gsub("-","/").slice(5..9) %>
+      </div>
+      <div class="taken_menus__item--wrapper__child">
+        <%= menu.name %>
+      </div>
+
       <%= react_component("Activity", menu_id: menu.id, date: date) %>
     </div>
   <% end %>
