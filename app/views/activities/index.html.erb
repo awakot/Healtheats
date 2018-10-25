@@ -3,4 +3,5 @@
 <% @menus.each do |menu| %>
   <div><%= menu.name %></div>
   <div><%= @menu_ids_with_date[menu.id] %></div>
+  <%= react_component("Activity", menu_id: menu.id, date: @menu_ids_with_date[menu.id]) %>
 <% end %>

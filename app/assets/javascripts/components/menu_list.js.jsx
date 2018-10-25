@@ -15,12 +15,10 @@ var CategoryMenuList = createReactClass({
 
 var Categories = createReactClass({
   getInitialState() {
-    return {clicked: false};
+    return { clicked: false };
   },
   handleClick() {
-    this.setState({
-      clicked: true
-    });
+    this.setState({ clicked: true });
     var categoryNameDivs =
       Array.prototype.slice.call(
         document.getElementsByClassName('categories-list__item--name')
