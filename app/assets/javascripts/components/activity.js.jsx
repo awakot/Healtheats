@@ -3,13 +3,22 @@ var Activity = createReactClass({
     return { clicked: false };
   },
   detailClicked() {
-    this.setState({ clicked: true });
+    if (this.state.clicked == false){
+      this.setState({ clicked: true });
+    } else {
+      this.setState({ clicked: false });
+    }
+  },
+  hideDetailBtn(){
+    $(".taken_menu__btn").addClass("transparent");
+    $(".taken_menus__item--wrapper__child").addClass("transparent");
+    $(".taken_menu__detail--btn").css("display", "block");  
   },
   render() {
     return (
-      <div className="taken_menu" onClick={hideDetailBtn}>
-        <div className="taken_menu__btn" onClick={this.detailClicked}>詳細</div>
-        {this.state.clicked ? <ActivityDetail menu_id={this.props.menu_id} date={this.props.date} /> : null}
+      <div className="taken_menu" onClick={this.detailClicked}>
+        <div className="taken_menu__btn" onClick={this.hideDetailBtn}>詳細</div>
+        <ActivityDetail menu_id={this.props.menu_id} date={this.props.date} clicked={this.state.clicked} />
       </div>
     );
   }
@@ -38,15 +47,22 @@ var ActivityDetail = createReactClass({
       }.bind(this)
     });
   },
+  hideMenuDetail(){
+    $(".taken_menu__detail").removeClass("clicked_true");
+    $(".taken_menu__detail").addClass("clicked_false");
+    $(".taken_menu__btn").removeClass("transparent");
+    $(".taken_menus__item--wrapper").children().removeClass("transparent");
+  },
   render() {
     return (
-      <div className="taken_menu__detail">
-        <div className="taken_menu__detail--date">{this.props.date}</div>
+      <div className={"taken_menu__detail clicked_"+ this.props.clicked}>
+        <div className="taken_menu__detail--date">{this.props.date} のメニュー</div>
         <div className="taken_menu__detail--name">{this.state.menu_name}</div>
         <div className="taken_menu__detail--desc">{this.state.menu_desc}</div>
-        <div className="taken_menu__detail--price">{this.state.menu_price}</div>
-        <div className="taken_menu__detail--pic">{this.state.menu_pic}</div>
-        <div className="taken_menu__detail--calorie">{this.state.menu_calorie_id}</div>
+        <div className="taken_menu__detail--price">¥{this.state.menu_price}</div>
+        <div className="taken_menu__detail--calorie">{this.state.menu_calorie_id}kcal</div>
+        <img src={this.state.menu_pic} className="taken_menu__detail--pic" />
+        <div className="taken_menu__detail--btn" onClick={this.hideMenuDetail}>close</div>
       </div>
     );
   }

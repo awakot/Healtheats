@@ -53,16 +53,39 @@
     font-size: 1.2em;
   }
   &__detail{
-    position: absolute;
-    top: 0;
+    position: fixed;
+    top: 50px;
+    left: 5%;
+    right: 5%;
+    bottom: 50px;
     background-color: #fff;
     border-radius: 5px;
-    width: 100%;
-    min-width: 100%;
-    margin: 0 20px;
+    width: 90%;
+    min-width: 90%;
     padding: 10px;
-    &--date, &--name, &--desc, &--price, &--pic, &--calorie{
+    &--date, &--name, &--desc, &--price, &--calorie{
       
     }
+    &--pic{
+      width: 100%;
+    }
+    &--btn{
+      cursor: pointer;
+      background: #000;
+      height: 50px;
+      color: #fff;
+    }
   }
+}
+
+.clicked{
+  &_true{
+  }
+  &_false{
+    display: none;
+  }
+}
+
+.transparent{
+  color: transparent;
 }
