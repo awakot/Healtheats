@@ -78,11 +78,11 @@ var ActivityDetail = createReactClass({
       <div className={"taken_menu__detail clicked_"+ this.props.clicked}>
         <div className="taken_menu__detail--date">{this.props.date} のメニュー</div>
         <div className="taken_menu__detail--name">{this.state.menu_name}</div>
-        <div className="taken_menu__detail--desc">{this.state.menu_desc}</div>
         <div className="taken_menu__detail--price">¥{this.state.menu_price}</div>
         <div className="taken_menu__detail--calorie">{calorie_amount}kcal</div>
+        <div className="taken_menu__detail--desc">{this.state.menu_desc}</div>
         <img src={this.state.menu_pic} className="taken_menu__detail--pic" />
-        <div className="taken_menu__detail--btn" onClick={this.hideMenuDetail}>close</div>
+        <div className="taken_menu__detail--btn" onClick={this.hideMenuDetail}>閉じる</div>
       </div>
     );
   }
