@@ -1,7 +1,7 @@
 <h1>今月食べたメニュー</h1>
 
 <% @menus.each do |menu| %>
+  <div><%= date = @menu_ids_with_date[menu.id].to_date.to_s.gsub("-","/").slice(5..9) %></div>
   <div><%= menu.name %></div>
-  <div><%= @menu_ids_with_date[menu.id] %></div>
-  <%= react_component("Activity", menu_id: menu.id, date: @menu_ids_with_date[menu.id]) %>
+  <%= react_component("Activity", menu_id: menu.id, date: date) %>
 <% end %>

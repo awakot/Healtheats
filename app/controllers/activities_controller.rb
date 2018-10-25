@@ -10,6 +10,7 @@ class ActivitiesController < ApplicationController
     @menu_ids_with_date = {}
     UserMenu.all
             .where(user_id: current_user.id)
+            .order("created_at desc")
             .map{ |user_menu| @menu_ids_with_date[user_menu.menu_id] = user_menu.created_at }
 
     @menus = Menu.all.where(id: @menu_ids_with_date.keys.to_a)

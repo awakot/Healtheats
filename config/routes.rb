@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root to: 'categories#index'
 
   namespace :api do
-    resources :menus, only: [:index, :create, :delete]
+    resources :menus, only: [:index, :show, :create, :delete]
     resources :restaurants, only: :index
     resources :calories, only: [:index, :show]
     resources :image_uploaders, only: :create
