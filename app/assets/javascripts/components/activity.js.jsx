@@ -28,6 +28,20 @@ var ActivityDetail = createReactClass({
   getInitialState() {
     return { menu_name: "" };
   },
+  loadCaloriesFromServer() {
+    $.ajax({
+      url: "/api/calories",
+      dataType: 'json',
+      success: function(calories) {
+        var dict = {}
+        calories.data.map((cal) => dict[cal.id] = cal.amount );
+        this.setState({ calories: dict });
+      }.bind(this),
+      error: function(status, err) {
+        console.error(this.props.url, status, err.toString());
+      }.bind(this)
+    });
+  },
   componentDidMount() {
     $.ajax({
       url: "/api/menus/".concat(this.props.menu_id).concat(".json"),
@@ -46,6 +60,7 @@ var ActivityDetail = createReactClass({
         console.error(this.props.url, status, err.toString());
       }.bind(this)
     });
+    this.loadCaloriesFromServer();
   },
   hideMenuDetail(){
     $(".taken_menu__detail").removeClass("clicked_true");
@@ -54,13 +69,18 @@ var ActivityDetail = createReactClass({
     $(".taken_menus__item--wrapper").children().removeClass("transparent");
   },
   render() {
+    var calorie_id = this.state.menu_calorie_id;
+    var calories = this.state.calories;
+    if (calorie_id !== undefined && calories !== undefined) {
+      var calorie_amount = calories[calorie_id];
+    }
     return (
       <div className={"taken_menu__detail clicked_"+ this.props.clicked}>
         <div className="taken_menu__detail--date">{this.props.date} のメニュー</div>
         <div className="taken_menu__detail--name">{this.state.menu_name}</div>
         <div className="taken_menu__detail--desc">{this.state.menu_desc}</div>
         <div className="taken_menu__detail--price">¥{this.state.menu_price}</div>
-        <div className="taken_menu__detail--calorie">{this.state.menu_calorie_id}kcal</div>
+        <div className="taken_menu__detail--calorie">{calorie_amount}kcal</div>
         <img src={this.state.menu_pic} className="taken_menu__detail--pic" />
         <div className="taken_menu__detail--btn" onClick={this.hideMenuDetail}>close</div>
       </div>
