@@ -15,7 +15,7 @@
     <p class="menu-detail__restaurant--address"><%= @restaurant.address %></p>
 
     <script type="text/javascript">
-    function initMap() {
+      function initMap() {
 
         var test ={lat: <%= @restaurant.latitude %>, lng: <%= @restaurant.longitude %>};
         var map = new google.maps.Map(document.getElementById('map'), {
@@ -42,7 +42,7 @@
     }
     </script>
     <script async defer
-        src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCWW3k0JLaCcCbcQOTm7GLU6Dwezb6XccU&callback=initMap">
+      src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCWW3k0JLaCcCbcQOTm7GLU6Dwezb6XccU&callback=initMap">
     </script>
     <style type="text/css">
     #map { height: 400px;
