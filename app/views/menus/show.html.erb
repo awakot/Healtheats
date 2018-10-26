@@ -6,6 +6,11 @@
     <span class="menu-detail__item--price">¥<%= @menu.price %></span>
     <span class="menu-detail__item--calorie"><%= @calorie %>kcal</span>
     <p class="menu-detail__item--desc"><%= @menu.description %></p>
+
+    <%= form_for(@activity, url: activities_path, method: :post) do |f| %>
+      <input type="submit" value="このメニューを食べた！" class="menu-detail__item--posting_record">
+      <%= hidden_field :menu, :id %>
+    <% end %>
   </div>
 
   <div class="menu-detail__restaurant">
@@ -13,6 +18,38 @@
     <p class="menu-detail__restaurant--name"><%= @restaurant.name %></p>
     <p class="menu-detail__restaurant--zip_code">〒<%= @restaurant.zip_code %></p>
     <p class="menu-detail__restaurant--address"><%= @restaurant.address %></p>
-    ここに地図？
+
+    <script type="text/javascript">
+      function initMap() {
+
+        var test ={lat: <%= @restaurant.latitude %>, lng: <%= @restaurant.longitude %>};
+        var map = new google.maps.Map(document.getElementById('menu-detail__restaurant--map'), {
+            zoom: 15,
+            center: test
+        });
+        var transitLayer = new google.maps.TransitLayer();
+        transitLayer.setMap(map);
+
+        var contentString = '住所：<%= @restaurant.address %>';
+        var infowindow = new google.maps.InfoWindow({
+            content: contentString
+        });
+
+        var marker = new google.maps.Marker({
+            position:test,
+            map: map,
+            title: contentString
+        });
+
+        marker.addListener('click', function() {
+            infowindow.open(map, marker);
+        });
+    }
+    </script>
+    <script async defer
+      src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCWW3k0JLaCcCbcQOTm7GLU6Dwezb6XccU&callback=initMap">
+    </script>
+    <p id="menu-detail__restaurant--map"></div>
   </div>
+  <%= link_to "カテゴリ選択へ戻る", root_path, class: "menu-detail__back_to_top--from_menu" %>
 </div>

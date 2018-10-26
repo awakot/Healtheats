@@ -13,19 +13,57 @@
  *= require_tree .
  *= require_self
  */
+/*
+ *= require font-awesome
+*/
 
  *{
    font-size: 16px;
  }
 
 html{
-  height: 100%;
+  height: auto;
   min-height: 100%;
-
 }
 
- body{
-   margin: 0;
-   height: 100%;
-   min-height: 100%;
- }
+body{
+  margin: 0;
+  height: -webkit-fill-available;
+  min-height: 100%;
+  bottom: 0;
+}
+
+@media screen and (max-width: 450px){
+  .navbar{
+    display: none;
+    z-index: 0;
+  }
+}
+
+.openMenuBtn, .closeMenuBtn{
+  cursor: pointer;
+  float: right;
+  z-index: 1035;
+}
+
+.openMenuBtn{
+  color: #fff;
+}
+
+.closeMenuBtn{
+  color: #777;
+  display: none;
+  margin-right: 10px;
+}
+
+.openMenuBtn-hamburger{
+  display: block;
+  width: 30px;
+  height: 2px;
+  margin: 7px 10px;
+  background-color: #fff;
+  border: 1px solid #fff;
+  &:first-child{
+    margin: 15px 10px 7px;
+  }
+}

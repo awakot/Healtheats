@@ -1,13 +1,13 @@
-<h1>Add New Category</h1>
+<h1>新しいカテゴリーを追加する</h1>
 
 <%= form_for @category do |f| %>
 
-  <p>
+  <p class="form">
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </p>
 
-  <p>
+  <p class="button">
     <%= f.submit %>
   </p>
 
