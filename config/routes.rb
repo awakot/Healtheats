@@ -24,6 +24,7 @@ Rails.application.routes.draw do
 
   resources :users
   resources :categories, only: :index
+  resources :tags, only: [:index, :show]
   resources :menus, only: :show
   resources :activities, only: [:index, :create, :thanks]
   resources :restaurants, only: :show

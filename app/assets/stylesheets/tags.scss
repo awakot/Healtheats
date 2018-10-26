@@ -1,3 +1,88 @@
 // Place all the styles related to the Tags controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@mixin tags-list($cat-list-font-size){
+  .tags{
+    background: #FF9935;
+    height: 100%;
+    min-height: 100%;
+    padding: 0 1em;
+    &-title{
+      &__tags-names{
+        padding: 0;
+        position: relative;
+        line-height: 1.5;
+        padding: 0.5em 0.5em 0.5em 1.7em;
+        list-style-type: none!important;
+        text-shadow: 1px 1px 1px whitesmoke;/*文字を立体的に*/
+        color: black;
+        &__tag-name{
+          border: 3px solid #FFF;
+          border-radius: 0.5em;
+          background: #FFF;
+          color: black;
+          text-decoration: none;
+          display: block;
+          padding: 0.7em;
+          margin: 0.5em 0;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 320px){
+  .tags{
+    &-title{
+      color: #fff;
+      padding: 2.3em 0 1.7em;
+      box-sizing: border-box;
+      &__line1, &__line2{
+        font-size: 1.8em;
+        font-weight: 700;
+        line-height: 1.5em;
+      }
+    }
+  }
+  @include tags-list($cat-list-font-size: 1.3em);
+}
+
+@media screen and (min-width: 321px){
+  .tags{
+    padding: 0 1.5em;
+    &-title{
+      color: #fff;
+      padding: 3em 0 2.5em;
+      &__line1, &__line2{
+        font-size: 2em;
+        font-weight: 700;
+        line-height: 1.7em;
+      }
+    }
+  }
+  @include tags-list($cat-list-font-size: 1.5em);
+}
+
+//
+// .tags-names {
+//   padding: 0;
+//   position: relative;
+// }
+//
+// .tags-names .tag-name {
+//   line-height: 1.5;
+//   padding: 0.5em 0.5em 0.5em 1.7em;
+//   list-style-type: none!important;
+//   background: -webkit-linear-gradient(top, #whitesmoke 0%, whitesmoke 100%);/*グラデーション*/
+//   background: linear-gradient(to bottom, whitesmoke 0%, #dadada 100%);/*グラデーション*/
+//   text-shadow: 1px 1px 1px whitesmoke;/*文字を立体的に*/
+//   color: black;
+// }
+
+.tags-title__tags-names .tags-title__tags-names__tag-name:before { /*疑似要素*/
+  font-family: "Font Awesome 5 Free";
+  content: "\f138";
+  position: absolute;
+  left : 0.5em; /*左端からのアイコンまでの距離*/
+  color: white; /*アイコン色*/
+}
