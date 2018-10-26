@@ -94,8 +94,10 @@ GEM
       factory_bot (~> 4.11.1)
       railties (>= 3.0.0)
     ffi (1.9.25)
+
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    gmaps4rails (2.1.2)
     i18n (1.1.0)
       concurrent-ruby (~> 1.0)
     io-like (0.3.0)
@@ -205,6 +207,13 @@ GEM
     selenium-webdriver (3.14.0)
       childprocess (~> 0.5)
       rubyzip (~> 1.2)
+    slim (4.0.1)
+      temple (>= 0.7.6, < 0.9)
+      tilt (>= 2.0.6, < 2.1)
+    slim-rails (3.2.0)
+      actionpack (>= 3.1)
+      railties (>= 3.1)
+      slim (>= 3.0, < 5.0)
     spring (2.0.2)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -217,6 +226,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    temple (0.8.0)
     thor (0.20.0)
     thread_safe (0.3.6)
     tilt (2.0.8)
@@ -247,6 +257,7 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   factory_bot_rails (~> 4.11, >= 4.11.1)
+
   jbuilder (~> 2.5)
   jquery-rails (~> 4.3.3)
   listen (>= 3.0.5, < 3.2)
@@ -259,6 +270,7 @@ DEPENDENCIES
   rspec-rails (~> 3.8)
   sass-rails (~> 5.0)
   selenium-webdriver
+  slim-rails
   spring
   spring-watcher-listen (~> 2.0.0)
   tzinfo-data
@@ -269,4 +281,4 @@ RUBY VERSION
    ruby 2.4.0p0
 
 BUNDLED WITH
-   1.16.5
+   1.16.6
