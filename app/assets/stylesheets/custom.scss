@@ -6,26 +6,32 @@ footer {
   padding-top: 5px;
   border-top: 1px solid #eaeaea;
   color: #777;
+  position: fixed;
 }
 
 footer a {
   color: #555;
+  position: fixed;
 }
 
 footer a:hover {
   color: #222;
+  position: fixed;
 }
 
 footer small {
   float: left;
+  position: fixed;
 }
 
 footer ul {
   float: right;
   list-style: none;
+  position: fixed;
 }
 
 footer ul li {
   float: left;
   margin-left: 15px;
+  position: fixed;
 }

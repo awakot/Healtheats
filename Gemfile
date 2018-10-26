@@ -11,6 +11,7 @@ gem 'bootstrap-sass', '3.3.7'
 gem 'pg', '>= 0.18', '< 2.0'
 # secure_pass導入のため
 gem 'bcrypt',         '3.1.12'
+gem 'geocoder'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
