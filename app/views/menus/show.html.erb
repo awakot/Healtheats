@@ -1,6 +1,20 @@
-<h1>メニュー詳細</h1>
+<div class="menu-detail">
+  <h2 class="menu-detail__name"><%= @menu.name %></h2>
+  <%= image_tag @menu.picture, class: "menu-detail__item--picture" %>
+  <div class="menu-detail__item">
+    <p class="menu-detail__item--title">メニュー情報</p>
+    <span class="menu-detail__item--price">¥<%= @menu.price %></span>
+    <span class="menu-detail__item--calorie"><%= @calorie %>kcal</span>
+    <p class="menu-detail__item--desc"><%= @menu.description %></p>
+  </div>
 
-<%= @menu.name %>
-<%= @menu.description %>
-<%= @menu.price %>
+  <div class="menu-detail__restaurant">
+    <h2 class="menu-detail__restaurant--title">店舗情報</h2>
+    <p class="menu-detail__restaurant--name"><%= @restaurant.name %></p>
+    <p class="menu-detail__restaurant--zip_code">〒<%= @restaurant.zip_code %></p>
+    <p class="menu-detail__restaurant--address"><%= @restaurant.address %></p>
+    ここに地図？
+  </div>
+  <%= link_to "カテゴリ選択へ戻る", root_path, class: "menu-detail__back_to_top--from_menu" %>
+</div>
 
