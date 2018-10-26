@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root to: 'categories#index'
 
   namespace :api do
-    resources :menus, only: [:index, :create, :delete]
+    resources :menus, only: [:index, :show, :create, :delete]
     resources :restaurants, only: :index
     resources :calories, only: [:index, :show]
     resources :image_uploaders, only: :create
@@ -26,6 +26,8 @@ Rails.application.routes.draw do
   resources :categories, only: :index
   resources :tags, only: [:index, :show]
   resources :menus, only: :show
+  resources :activities, only: [:index, :create, :thanks]
+  resources :restaurants, only: :show
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

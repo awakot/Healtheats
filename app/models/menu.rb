@@ -5,6 +5,8 @@ class Menu < ApplicationRecord
   has_many :categories, through: :menu_categories
   has_many :menu_tags
   has_many :tags, through: :menu_tags
+  has_many :user_menus
+  has_many :users, through: :user_menus
   has_one :restaurant
 
   validates :calorie_id, presence: true

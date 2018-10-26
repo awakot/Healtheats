@@ -20,6 +20,10 @@ class Api::MenusController < ApplicationController
     render :index, status: :deleted
   end
 
+  def show
+    @data = Menu.find(params[:id])
+  end
+
   private
 
   def menu_params
