@@ -13,8 +13,46 @@
     <p class="menu-detail__restaurant--name"><%= @restaurant.name %></p>
     <p class="menu-detail__restaurant--zip_code">〒<%= @restaurant.zip_code %></p>
     <p class="menu-detail__restaurant--address"><%= @restaurant.address %></p>
-    ここに地図？
+
+    <script type="text/javascript">
+    function initMap() {
+
+        var test ={lat: <%= @restaurant.latitude %>, lng: <%= @restaurant.longitude %>};
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 15,
+            center: test
+        });
+        var transitLayer = new google.maps.TransitLayer();
+        transitLayer.setMap(map);
+
+        var contentString = '住所：<%= @restaurant.address %>';
+        var infowindow = new google.maps.InfoWindow({
+            content: contentString
+        });
+
+        var marker = new google.maps.Marker({
+            position:test,
+            map: map,
+            title: contentString
+        });
+
+        marker.addListener('click', function() {
+            infowindow.open(map, marker);
+        });
+    }
+    </script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCWW3k0JLaCcCbcQOTm7GLU6Dwezb6XccU&callback=initMap">
+    </script>
+    <style type="text/css">
+    #map { height: 400px;
+      margin-left:auto;
+      margin-right:auto;
+      text-align:left;
+      width: 80%;}
+    </style>
+    <div id="map"></div>
+
   </div>
   <%= link_to "カテゴリ選択へ戻る", root_path, class: "menu-detail__back_to_top--from_menu" %>
 </div>
-
