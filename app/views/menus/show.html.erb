@@ -15,10 +15,10 @@
     <p class="menu-detail__restaurant--address"><%= @restaurant.address %></p>
 
     <script type="text/javascript">
-    function initMap() {
+      function initMap() {
 
         var test ={lat: <%= @restaurant.latitude %>, lng: <%= @restaurant.longitude %>};
-        var map = new google.maps.Map(document.getElementById('map'), {
+        var map = new google.maps.Map(document.getElementById('menu-detail__restaurant--map'), {
             zoom: 15,
             center: test
         });
@@ -44,15 +44,7 @@
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCWW3k0JLaCcCbcQOTm7GLU6Dwezb6XccU&callback=initMap">
     </script>
-    <style type="text/css">
-    #map { height: 400px;
-      margin-left:auto;
-      margin-right:auto;
-      text-align:left;
-      width: 80%;}
-    </style>
-    <div id="map"></div>
-
+    <p id="menu-detail__restaurant--map"></div>
   </div>
   <%= link_to "カテゴリ選択へ戻る", root_path, class: "menu-detail__back_to_top--from_menu" %>
 </div>
