@@ -144,7 +144,7 @@ Restaurant.create(
 
   calorie_id_menu_3 = Calorie.find_by(amount: 500).id
   restaurant_id_menu_6 = Restaurant.find_by(name: "すし居酒屋 すすむ").id
-  menu_3 = Menu.create(
+  menu_6 = Menu.create(
     name: "細巻き寿司セット_" + time,
     description: "新鮮な魚介類が味わえる",
     price: 550,
