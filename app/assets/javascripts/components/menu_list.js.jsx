@@ -1,4 +1,32 @@
 var CategoryMenuList = createReactClass({
+  getInitialState() {
+    return { position: [] };
+  },
+  getPosition() {
+    navigator.geolocation.getCurrentPosition(
+      // 取得成功した場合
+      function location(position) {
+        alert("緯度:"+position.coords.latitude+",経度"+position.coords.longitude);
+      },
+      // 取得失敗した場合
+      function(error) {
+        switch(error.code) {
+          case 1: //PERMISSION_DENIED
+            alert("位置情報の利用が許可されていません");
+            break;
+          case 2: //POSITION_UNAVAILABLE
+            alert("現在位置が取得できませんでした");
+            break;
+          case 3: //TIMEOUT
+            alert("タイムアウトになりました");
+            break;
+          default:
+            alert("その他のエラー(エラーコード:"+error.code+")");
+            break;
+        }
+      }
+    );
+  },
   render() {
     var categoryNodes = this.props.categories.map(function (cat) {
       return (
@@ -7,6 +35,7 @@ var CategoryMenuList = createReactClass({
     });
     return (
       <div className="categories-list">
+        {/* <div onClick={this.getPosition}>近くのお店を検索する（位置情報を利用します）</div> */}
         {categoryNodes}
       </div>
     );
@@ -42,14 +71,14 @@ var CategoryMenu = createReactClass({
     return (
       this.props.menus.map(function (menu) {
         return (
-          <Menu menu={menu} key={menu.id} />
+          <AdminMenu menu={menu} key={menu.id} />
         );
       })
     );    
   }
 });
 
-var Menu = createReactClass({
+var AdminMenu = createReactClass({
   getInitialState() {
     return { calorie_amount: null };
   },
