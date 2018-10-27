@@ -62,7 +62,7 @@
             // TODO
           }
         }
-      }  
+      }
     }
   }
 }
@@ -78,7 +78,7 @@
         font-weight: 700;
         line-height: 1.5em;
       }
-    }  
+    }
   }
   @include categories-list($cat-list-font-size: 1.3em);
 }
@@ -96,6 +96,5 @@
       }
     }
   }
-  @include categories-list($cat-list-font-size: 1.5em);  
+  @include categories-list($cat-list-font-size: 1.5em);
 }
-
