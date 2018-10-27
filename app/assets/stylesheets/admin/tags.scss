@@ -6,11 +6,16 @@
     padding: 16px;
     background: #F7F7F7;
   }
+  &--button:hover{
+    background: #2EBC99;
+  }
   &--button{
     max-width: 400px;
     margin: 10px auto;
     padding: 16px;
+    color: #fff;
     &input[type="submit"]{
+      background-color: transparent;
       border: none;
       cursor: pointer;
       outline: none;
