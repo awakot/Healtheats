@@ -111,3 +111,48 @@ Restaurant.create(
   created_at: Time.now,
   updated_at: Time.now
 )
+5.times do |time|
+  time = time.to_s
+
+  calorie_id_menu_1 = Calorie.find_by(amount: 200).id
+  restaurant_id_menu_4 = Restaurant.find_by(name: "陀らく").id
+  menu_4 = Menu.create(
+    name: "焼き鳥盛り合わせ_" + time,
+    description: "タンパク質満点、お酒にも合う",
+    price: 700,
+    picture: "/uploads/salad.jpg",
+    calorie_id: calorie_id_menu_1,
+    restaurant_id: restaurant_id_menu_4,
+    created_at: Time.now,
+    updated_at: Time.now
+  )
+  menu_4.categories << Category.find_by(name: "がっつりお肉")
+
+  calorie_id_menu_1 = Calorie.find_by(amount: 200).id
+  restaurant_id_menu_5 = Restaurant.find_by(name: "はなの舞 神田駅前店").id
+  menu_5 = Menu.create(
+    name: "はなの舞海鮮サラダ_" + time,
+    description: "その時期にとれた新鮮野菜！",
+    price: 690,
+    picture: "/uploads/salad.jpg",
+    calorie_id: calorie_id_menu_1,
+    restaurant_id: restaurant_id_menu_5,
+    created_at: Time.now,
+    updated_at: Time.now
+  )
+  menu_5.categories << Category.find_by(name: "野菜たっぷりサラダ")
+
+  calorie_id_menu_3 = Calorie.find_by(amount: 500).id
+  restaurant_id_menu_6 = Restaurant.find_by(name: "すし居酒屋 すすむ").id
+  menu_3 = Menu.create(
+    name: "細巻き寿司セット_" + time,
+    description: "新鮮な魚介類が味わえる",
+    price: 550,
+    picture: "/uploads/roasted_fish.jpg",
+    calorie_id: calorie_id_menu_3,
+    restaurant_id: restaurant_id_menu_6,
+    created_at: Time.now,
+    updated_at: Time.now
+  )
+  menu_6.categories << Category.find_by(name: "さっぱりお魚")
+end
