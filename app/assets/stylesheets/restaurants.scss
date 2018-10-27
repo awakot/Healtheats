@@ -1,3 +1,63 @@
 // Place all the styles related to the restaurants controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.restaurant-detail{
+  background-color: #FF9935;
+  height: 100%;
+  min-height: 100%;
+  &__name{
+    color: #fff;
+    font-weight: 700;
+    padding: 20px 5px 15px;
+    margin: 0;
+  }
+  &__restaurant{
+    background-color: #fff;
+    margin: 10px 5px;
+    padding: 15px 10px;
+    border-radius: 5px;
+    &--desc{
+      margin: 0;
+    }
+    &--title{
+      font-weight: 700;
+      font-size: 1.2em;
+    }
+
+    &--picture{
+      width: 100%;
+      height: auto;
+    }
+    &__menu{
+      &--names {
+        padding: 0;
+        font-weight: 700;
+        padding: 20px 5px 15px;
+        margin: 0;
+      }
+      &--names, &--name{
+        line-height: 1.5;
+        padding: 0.5em 0.5em 0.5em 1.7em;
+        list-style-type: none!important;
+        background: -webkit-linear-gradient(top, #whitesmoke 0%, whitesmoke 100%);/*グラデーション*/
+        background: linear-gradient(to bottom, whitesmoke 0%, #dadada 100%);/*グラデーション*/
+        text-shadow: 1px 1px 1px whitesmoke;/*文字を立体的に*/
+        color: black;
+      }
+      &--names, &--name:before{
+      font-family: "Font Awesome 5 Free";
+      content: "\f138";
+      left : 0.5em; /*左端からのアイコンまでの距離*/
+      color: orange; /*アイコン色*/
+      }
+    }
+  }
+}
+
+#restaurant-detail__restaurant--map {
+  height: 400px;
+  margin-left:auto;
+  margin-right:auto;
+  text-align:left;
+  width: 80%;
+}
