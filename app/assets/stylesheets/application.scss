@@ -13,9 +13,8 @@
  *= require_tree .
  *= require_self
  */
-/*
- *= require font-awesome
-*/
+
+ @import "font-awesome";
 
  *{
    font-size: 16px;
