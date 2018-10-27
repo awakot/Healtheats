@@ -71,14 +71,14 @@ var CategoryMenu = createReactClass({
     return (
       this.props.menus.map(function (menu) {
         return (
-          <Menu menu={menu} key={menu.id} />
+          <AdminMenu menu={menu} key={menu.id} />
         );
       })
     );    
   }
 });
 
-var Menu = createReactClass({
+var AdminMenu = createReactClass({
   getInitialState() {
     return { calorie_amount: null };
   },
