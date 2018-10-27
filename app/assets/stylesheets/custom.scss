@@ -1,7 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-<<<<<<< HEAD
 footer {
   margin-top: 45px;
   padding-top: 5px;
@@ -35,7 +34,7 @@ footer ul li {
   float: left;
   margin-left: 15px;
   position: fixed;
-=======
+}
 @media screen and (min-width: 451px){
   .navbar{ // override bootstrap
     background-color: rgba(255, 255, 255, 0.8);
@@ -113,5 +112,4 @@ footer {
       }
     }
   }
->>>>>>> master
 }
