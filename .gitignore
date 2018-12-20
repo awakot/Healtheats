@@ -20,8 +20,9 @@
 /node_modules
 /yarn-error.log
 .DS_Store
-/public/assets
 .byebug_history
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+public/assets/
