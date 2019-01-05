@@ -46,8 +46,14 @@ var Categories = createReactClass({
   getInitialState() {
     return { clicked: false };
   },
-  handleClick() {
+  hoge(hoge){
     this.setState({ clicked: true });
+    console.log(hoge);
+  },
+  handleClick() {
+    // this.setState({ clicked: true });
+    let hoge = "hoge";
+    this.hoge(hoge);
     var categoryNameDivs =
       Array.prototype.slice.call(
         document.getElementsByClassName('categories-list__item--name')
